@@ -1,3 +1,5 @@
+import '@dotlottie/player-component';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function HeroSection() {
     return (
@@ -310,9 +312,15 @@ export default function HeroSection() {
                             </svg>
                         </div>
                         <div className="hero-asset-grid top-ui css-1b8td8u-Homepage-desktopGrid">
-                            <dotlottie-player
-                                src="/top-ui.lottie"
-                                autoPlay="true"
+                            {/* <dotlottie-player
+                                src="../../assets/top-ui.lottie"
+                                autoPlay
+                                style={{ height: "100%", width: "100%" }}
+                                background="transparent"
+                            /> */}
+                            <DotLottieReact
+                                src="../../assets/top-ui.lottie"
+                                autoPlay
                                 style={{ height: "100%", width: "100%" }}
                                 background="transparent"
                             />
@@ -462,7 +470,7 @@ export default function HeroSection() {
                         </div>
                         <div className="hero-asset-grid top-ui css-1ac2p79-Homepage-mobileGrid">
                             <dotlottie-player
-                                src="/top-ui-mobile-2.lottie"
+                                src="/public/top-ui-mobile-2.lottie"
                                 autoPlay="true"
                                 style={{ height: "100%", width: "100%" }}
                                 background="transparent"
