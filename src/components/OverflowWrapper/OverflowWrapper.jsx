@@ -4,11 +4,10 @@ export default function OverflowWrapper() {
         <div className="PageIndex-overflowWrapper" style={{ overflow: "hidden" }}>
             <section className="IndexFeatures" data-view="IndexFeatures">
                 <div className="IndexFeatures-bg">
-                    <div className="IndexFeatures-about-wrapper">
+                    <div id="IndexFeatures-about-wrapper" className="IndexFeatures-about-wrapper">
                         <div className="IndexFeatures-about">
                             <p className="isSectionShown" style={{}}>
                                 <span
-                                    data-index={1}
                                     className="IndexFeatures-aboutLine"
                                     style={{
                                         display: "inline-block",
@@ -46,9 +45,10 @@ export default function OverflowWrapper() {
                             </p>
                         </div>
                     </div>
-                    <div className="IndexFeatures-list-wrapper">
+                    <div id="IndexFeatures-list-wrapper" className="IndexFeatures-list-wrapper">
                         <h2 className="IndexFeatures-list-title isSectionShown" style={{}}>
-                            <span
+                        Flexible and scalable technology to meet your unique payment needs
+                            {/* <span
                                 data-index={1}
                                 className="IndexFeatures-list-titleLine"
                                 style={{
@@ -57,7 +57,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                Flexible and scalable technology{" "}
+                                Flexible and scalable 
                             </span>
                             <br />
                             <span
@@ -69,7 +69,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                to meet your unique payment{" "}
+                                technology to meet your 
                             </span>
                             <br />
                             <span
@@ -81,8 +81,8 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                needs{" "}
-                            </span>
+                                unique payment needs
+                            </span> */}
                         </h2>
                         <div
                             className="IndexFeatures-list-description isSectionShown"
@@ -97,7 +97,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                Legacy payment solutions are slow, rigid, and lack{" "}
+                                Legacy payment solutions are slow, rigid, 
                             </span>
                             <br />
                             <span
@@ -109,7 +109,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                control. Bring the financial solutions to your{" "}
+                                and lack control. Bring the financial solutions 
                             </span>
                             <br />
                             <span
@@ -121,7 +121,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                customers at the point of need and delight them in{" "}
+                                to your customers at the point of need and 
                             </span>
                             <br />
                             <span
@@ -133,7 +133,7 @@ export default function OverflowWrapper() {
                                     willChange: "opacity, transform"
                                 }}
                             >
-                                a whole new way.{" "}
+                                delight them in a whole new way.
                             </span>
                         </div>
                     </div>

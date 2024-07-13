@@ -1,7 +1,132 @@
+import { useRef } from 'react';
 import '@dotlottie/player-component';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+// import * as Scrollytelling from "@bsmnt/scrollytelling";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
+    const textArray = ['credit', 'payroll', 'lending', 'expense', 'embedded finance'];
+    const slidesRef = useRef([]);
+    const listRef = useRef(null);
+    const vSlideRef = useRef(null);
+
+    useGSAP(() => {
+        let mediaQuery = gsap.matchMedia()
+        const LaptopBreakPoint = 1025
+        const TabletBreakPoint = 768
+        const mobileBreakPoint = 766
+        gsap.to("#swap-title", { opacity: 1, y: 0, visibility: "visible", delay: 2.3 })
+        gsap.to("#swap-text", { opacity: 1, y: 0, visibility: "visible", delay: 2.3 })
+        gsap.to("#page-subtitle", { opacity: 1, visibility: "visible", delay: 2.3 })
+        gsap.to("#page-button", { opacity: 1, visibility: "visible", delay: 2.3 })
+        gsap.fromTo(".grid-svg-path",
+            {
+                strokeDashoffset: "-610.244px",
+                strokeDasharray: "0px, 999999px",
+            },
+            {
+                strokeDashoffset: "0px",
+                strokeDasharray: "1200px 0px",
+                duration: 2
+            })
+        gsap.to(".IndexHero-logo", { opacity: 1, visibility: "visible", stagger: 0.1 })
+
+
+        mediaQuery.add({
+            isDesktop: `(min-width: ${LaptopBreakPoint}px)`,
+            isLaptop: `(max-width: ${LaptopBreakPoint - 1}px) and (min-width: ${TabletBreakPoint + 1}px)`,
+            isTablet: `(max-width: ${TabletBreakPoint}px) and (min-width: ${mobileBreakPoint + 1}px)`,
+            isMobile: `(max-width: ${mobileBreakPoint}px)`,
+        }, (context) => {
+            let { isDesktop, isLaptop, isTablet } = context.conditions;
+            gsap.fromTo("#hero-photo",
+                {
+                    transform: "translate3d(0px, 0px, 0px) rotate(0deg)"
+                },
+                {
+                    transform: "translate3d(100px, -300px, 0px) rotate(15deg)",
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: "#hero-photo",
+                        start: isDesktop ? "top, 33%" : isLaptop ? "top, 32%" : isTablet ? "top, 30%" : "top, 24%",
+                        scrub: 1,
+                    }
+                })
+        })
+        gsap.fromTo(".grid-svg-path",
+            {
+                strokeDashoffset: "0px",
+                strokeDasharray: "1200px 0px",
+            },
+            {
+                strokeDashoffset: "-610.244px",
+                // -245.393
+                strokeDasharray: "0px, 999999px",
+                duration: 1,
+                scrollTrigger: {
+                    trigger: ".grid-svg-path",
+                    start: "top, 11.7%",
+                    scrub: 1,
+                }
+            })
+    }, [])
+
+    useGSAP(() => {
+        const slides = slidesRef.current;
+        const list = listRef.current;
+
+        const vsOpts = {
+            slides: slides,
+            list: list,
+            duration: 0.3,
+            lineHeight: 65,
+        };
+
+        const progress = vSlideRef.current ? vSlideRef.current.progress() : 0;
+
+        if (vSlideRef.current) {
+            vSlideRef.current.revert();
+        }
+
+        const vSlide = gsap.timeline({
+            repeat: 0,
+        });
+
+        slides.forEach((slide, i) => {
+            gsap.set(slide, { y: 0 });
+            let label = "slide" + i;
+            vSlide.add(label);
+
+            if (i >= 0) {
+                vSlide.to(
+                    vsOpts.list,
+                    {
+                        duration: vsOpts.duration,
+                        delay: 2,
+                        y: i * -1 * vsOpts.lineHeight,
+                        ease: 'power4.inOut',
+                        color: i === vsOpts.list.children.length - 1 ? '#2a206a' : '#20A472',
+                        transition: i === vsOpts.list.children.length - 1 ? 'color 2s' : 'none',
+                    },
+                    label
+                );
+            }
+        });
+
+        vSlide.progress(progress);
+        vSlideRef.current = vSlide;
+
+        return () => {
+            if (vSlideRef.current) {
+                vSlideRef.current.kill();
+            }
+        };
+    }, []);
+
+
     return (
         <section className="IndexHero" data-view="IndexHero">
             <div className="IndexHero-wrapper">
@@ -11,7 +136,7 @@ export default function HeroSection() {
                             className="IndexHero-title isImmediateShow isSectionShown"
                             id="page-title"
                         >
-                            <span>The next era of</span>
+                            <span id="swap-title">The next era of</span>
                             <span
                                 style={{
                                     overflow: "hidden",
@@ -31,20 +156,25 @@ export default function HeroSection() {
                                         color: "rgb(42, 32, 106)",
                                         transform: "translate(0px, -260px)"
                                     }}
+                                    className='v-slides'
+                                    ref={listRef}
                                 >
-                                    <div style={{ height: 65 }}>credit</div>
-                                    <div style={{ height: 65 }}>payroll</div>
-                                    <div style={{ height: 65 }}>lending</div>
-                                    <div style={{ height: 65 }}>expense</div>
-                                    <div style={{ height: 65 }}>embedded finance</div>
+                                    {
+                                        textArray.map((item, index) => <div className="v-slide" key={index} ref={el => slidesRef.current[index] = el} style={{ height: 65 }}>{item}</div>)
+                                    }
+                                    {/* <div style={{ height: 65 }}>{swapText}</div> */}
+                                    {/* <div style={{ height: 65 }}>payroll</div> */}
+                                    {/* <div style={{ height: 65 }}>lending</div> */}
+                                    {/* <div style={{ height: 65 }}>expense</div> */}
+                                    {/* <div style={{ height: 65 }}>embedded finance</div> */}
                                 </div>
                             </span>
                         </h1>
-                        <div className="IndexHero-subtitle isSectionShown">
+                        <div id='page-subtitle' className="IndexHero-subtitle isSectionShown">
                             Integrate end to end credit and payment solutions into your business
                             processes using our modern card issuing platform.
                         </div>
-                        <div className="IndexHero-textButton IndexHero-ctas isSectionShown">
+                        <div id='page-button' className="IndexHero-textButton IndexHero-ctas isSectionShown">
                             <a
                                 className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButtonBase-root css-1gbd66w-MuiButtonBase-root-MuiButton-root-Link-root"
                                 target="_self"
@@ -66,7 +196,7 @@ export default function HeroSection() {
                     </div>
                     <div
                         className="IndexHero-sequenceWrapper isHide"
-                        data-video-path="https://s3.amazonaws.com/marqeta-videos/img/hero/"
+                        data-video-path="../../assets/marqeta-videos/img/hero/"
                         style={{ visibility: "hidden" }}
                     >
                         <div className="IndexHero-sequenceInner">
@@ -76,7 +206,7 @@ export default function HeroSection() {
                                 crossOrigin=""
                                 preload="auto"
                                 className="IndexHero-sequence isShow"
-                                src="https://s3.amazonaws.com/marqeta-videos/img/hero/sequence.mp4"
+                                src="../../assets/marqeta-videos/img/hero/sequence.mp4"
                                 data-timeout={262}
                             />
                         </div>
@@ -90,7 +220,7 @@ export default function HeroSection() {
                     </div>
                 </div>
                 <div className="IndexHero-logos">
-                    <div className="IndexHero-logo isImmediateShow isSectionShown">
+                    <div className="IndexHero-logo isImmediateShow isSectionShown" >
                         <img
                             data-lazy="true"
                             data-src="/static/svg/logo-uber.svg"
@@ -132,40 +262,10 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
-            <div
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: 600
-                }}
-            >
-                <div
-                    className="IndexHero-wrapper"
-                    style={{ position: "relative", height: "100%" }}
-                >
-                    <div
-                        className="hero-asset"
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            right: 0,
-                            zIndex: 999,
-                            width: "100%",
-                            height: "100%"
-                        }}
-                    >
-                        <div
-                            className="hero-asset-photo css-1en4yzq-Homepage-heroPhoto"
-                            style={{
-                                translate: "none",
-                                rotate: "none",
-                                scale: "none",
-                                transform:
-                                    "translate3d(85.9375px, -257.812px, 0px) rotate(12.8906deg)"
-                            }}
-                        >
+            <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 600 }}>
+                <div className="IndexHero-wrapper" style={{ position: "relative", height: "100%" }}>
+                    <div className="hero-asset" style={{ position: "absolute", top: 0, right: 0, zIndex: 999, width: "100%", height: "100%" }}>
+                        <div id="hero-photo" className="hero-asset-photo css-1en4yzq-Homepage-heroPhoto">
                             <img
                                 src="/top-photo.png"
                                 srcSet="/top-photo.png?width=3840 3840w, /top-photo.png?width=3520 3520w, /top-photo.png?width=3200 3200w, /top-photo.png?width=2880 2880w, /top-photo.png?width=2560 2560w, /top-photo.png?width=2240 2240w, /top-photo.png?width=1920 1920w, /top-photo.png?width=1600 1600w, /top-photo.png?width=1440 1440w, /top-photo.png?width=1280 1280w, /top-photo.png?width=960 960w, /top-photo.png?width=1280 640w"
@@ -174,6 +274,7 @@ export default function HeroSection() {
                                 style={{ width: "100%" }}
                             />
                         </div>
+                        {/* Desktop view */}
                         <div className="hero-asset-grid top-grid css-1b8td8u-Homepage-desktopGrid">
                             <svg
                                 className="top-grid_svg__ui-top-grid"
@@ -185,55 +286,37 @@ export default function HeroSection() {
                                     d="M16.828-1.407S-11.486 110.807 38.473 179.81c85.524 118.129 174.515 41.931 241.211 113.8 51.958 55.981 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-101.546 101.969-99.112 216.798"
                                     stroke="url(#top-grid_svg__paint0_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-524.429",
-                                        strokeDasharray: "171.631px, 1048.96px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M47.986-1.407S15.081 105.595 67.106 177.302c89.229 122.962 177.028 41.931 243.738 113.8 51.958 55.981 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-99.033 104.476-96.585 219.323"
                                     stroke="url(#top-grid_svg__paint1_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-525.153",
-                                        strokeDasharray: "171.868px, 1050.41px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M55.765-1.407S21.71 104.296 74.262 176.67c90.142 124.171 177.663 41.932 244.36 113.801 51.957 55.981 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.454 1.072 98.254-98.398 105.107-95.95 219.936"
                                     stroke="url(#top-grid_svg__paint2_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-525.336",
-                                        strokeDasharray: "171.928px, 1050.77px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M24.619-1.407s-29.465 110.915 21.01 180.584c86.451 119.338 175.137 41.932 241.847 113.801 51.957 55.98 47.22 102.222 91.451 148.121 72.082 74.791 302.509.487 303.489 89.453 1.071 98.255-100.912 102.583-98.477 217.43"
                                     stroke="url(#top-grid_svg__paint3_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-524.601",
-                                        strokeDasharray: "171.687px, 1049.3px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M32.413-1.407S1.797 108.192 52.79 178.546c87.376 120.546 175.771 41.931 242.468 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453 1.071 98.255-100.29 103.214-97.842 218.061"
                                     stroke="url(#top-grid_svg__paint4_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-524.773",
-                                        strokeDasharray: "171.744px, 1049.65px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M40.191-1.407s-31.754 108.3 19.754 179.34c88.302 121.754 176.406 41.931 243.103 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453 1.071 98.255-99.655 103.845-97.22 218.692"
                                     stroke="url(#top-grid_svg__paint5_linear_133_5669)"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-524.965",
-                                        strokeDasharray: "171.807px, 1050.03px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <defs>
                                     <linearGradient
@@ -312,19 +395,14 @@ export default function HeroSection() {
                             </svg>
                         </div>
                         <div className="hero-asset-grid top-ui css-1b8td8u-Homepage-desktopGrid">
-                            {/* <dotlottie-player
-                                src="../../assets/top-ui.lottie"
-                                autoPlay
-                                style={{ height: "100%", width: "100%" }}
-                                background="transparent"
-                            /> */}
-                            <DotLottieReact
-                                src="../../assets/top-ui.lottie"
-                                autoPlay
+                            <dotlottie-player
+                                src="/top-ui.lottie"
+                                autoPlay={true}
                                 style={{ height: "100%", width: "100%" }}
                                 background="transparent"
                             />
                         </div>
+                        {/* Mobile view */}
                         <div className="css-1ac2p79-Homepage-mobileGrid">
                             <svg
                                 className="top-grid-mobile_svg__ui-top-grid"
@@ -337,60 +415,42 @@ export default function HeroSection() {
                                     stroke="url(#top-grid-mobile_svg__paint0_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.39",
-                                        strokeDasharray: "68.8548px, 420.879px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M22.75 20.298s-3.656 43.196 24.166 63.867c47.715 35.443 76.18-4.295 110.018 14.795 26.355 14.869 28.651 32.477 50.926 44.487 36.301 19.568 123.667-33.622 132.208-.874 9.429 36.169-30.91 49.652-19.401 91.795"
                                     stroke="url(#top-grid-mobile_svg__paint1_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.681",
-                                        strokeDasharray: "68.9502px, 421.462px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M25.93 19.43s-4.245 42.844 23.853 63.702c48.2 35.787 76.441-4.366 110.273 14.725 26.355 14.87 28.651 32.478 50.926 44.487 36.3 19.569 123.667-33.622 132.208-.873 9.429 36.169-30.593 49.814-19.085 91.95"
                                     stroke="url(#top-grid-mobile_svg__paint2_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.755",
-                                        strokeDasharray: "68.9743px, 421.61px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M13.202 22.91s-1.891 44.256 25.11 64.347c46.25 34.415 75.408-4.083 109.246 15.006 26.356 14.87 28.651 32.478 50.926 44.487 36.301 19.569 123.667-33.622 132.208-.873 9.429 36.168-31.851 49.162-20.347 91.307"
                                     stroke="url(#top-grid-mobile_svg__paint3_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.459",
-                                        strokeDasharray: "68.8774px, 421.017px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M16.387 22.038s-2.483 43.9 24.793 64.185c46.738 34.758 75.667-4.153 109.5 14.938 26.355 14.869 28.65 32.477 50.926 44.487 36.3 19.568 123.667-33.622 132.208-.874 9.428 36.169-31.54 49.326-20.03 91.469"
                                     stroke="url(#top-grid-mobile_svg__paint4_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.528",
-                                        strokeDasharray: "68.9001px, 421.156px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <path
                                     d="M19.567 21.17S16.5 64.715 44.049 85.197c47.227 35.1 75.927-4.225 109.76 14.866 26.355 14.869 28.651 32.477 50.926 44.487 36.3 19.568 123.667-33.622 132.208-.874 9.429 36.169-31.222 49.489-19.718 91.633"
                                     stroke="url(#top-grid-mobile_svg__paint5_linear_199_2331)"
                                     strokeWidth="0.5"
                                     strokeMiterlimit={10}
-                                    style={{
-                                        strokeDashoffset: "-210.605",
-                                        strokeDasharray: "68.9252px, 421.309px"
-                                    }}
+                                    className='grid-svg-path'
                                 />
                                 <defs>
                                     <linearGradient
@@ -470,17 +530,14 @@ export default function HeroSection() {
                         </div>
                         <div className="hero-asset-grid top-ui css-1ac2p79-Homepage-mobileGrid">
                             <dotlottie-player
-                                src="/public/top-ui-mobile-2.lottie"
-                                autoPlay="true"
+                                src="/top-ui-mobile-2.lottie"
+                                autoPlay={true}
                                 style={{ height: "100%", width: "100%" }}
                                 background="transparent"
                             />
                         </div>
                     </div>
-                    <div
-                        className="hero-asset-grid css-1b8td8u-Homepage-desktopGrid"
-                        style={{ zIndex: 99 }}
-                    >
+                    <div className="hero-asset-grid css-1b8td8u-Homepage-desktopGrid" style={{ zIndex: 99 }}>
                         <svg
                             className="bottom-grid_svg__ui-bottom-grid"
                             viewBox="0 0 832 750"
@@ -491,136 +548,91 @@ export default function HeroSection() {
                                 d="M63.558.593S28.35 104.98 81.419 178.04c91.068 125.379 178.285 41.932 244.995 113.801 51.958 55.98 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.453 1.072 98.255-97.762 105.739-95.328 220.568"
                                 stroke="url(#bottom-grid_svg__paint0_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-525.537",
-                                    strokeDasharray: "171.994px, 1051.17px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M71.335.593S34.99 103.681 88.562 177.408c91.994 126.587 178.92 41.931 245.63 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453 1.071 98.255-97.141 106.37-94.693 221.199"
                                 stroke="url(#bottom-grid_svg__paint1_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-525.741",
-                                    strokeDasharray: "172.061px, 1051.58px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M79.13.593s-37.496 101.79 16.605 176.184c92.92 127.796 179.555 41.931 246.252 113.8 51.957 55.981 47.221 102.223 91.451 148.122 72.082 74.791 302.51.486 303.489 89.453 1.071 98.254-96.506 106.983-94.072 221.83"
                                 stroke="url(#bottom-grid_svg__paint2_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-525.951",
-                                    strokeDasharray: "172.129px, 1052px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M86.922.593S48.275 101.066 102.89 176.164c93.847 129.004 180.178 41.931 246.887 113.8 51.958 55.981 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-95.883 107.614-93.436 222.461"
                                 stroke="url(#bottom-grid_svg__paint3_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-526.173",
-                                    strokeDasharray: "172.202px, 1052.45px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M94.703.593S54.904 99.768 110.05 175.532c94.773 130.213 180.813 41.932 247.509 113.801 51.958 55.98 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-95.249 108.245-92.801 223.092"
                                 stroke="url(#bottom-grid_svg__paint4_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-526.392",
-                                    strokeDasharray: "172.274px, 1052.88px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M102.495.593s-40.95 97.876 14.713 174.308c95.685 131.421 181.434 41.931 248.144 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453 1.071 98.255-94.614 108.877-92.179 223.706"
                                 stroke="url(#bottom-grid_svg__paint5_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-526.615",
-                                    strokeDasharray: "172.347px, 1053.33px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M110.276.593s-42.087 96.56 14.077 173.677c96.612 132.629 182.07 41.931 248.779 113.801 51.958 55.98 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.453 1.072 98.255-93.992 109.508-91.544 224.337"
                                 stroke="url(#bottom-grid_svg__paint6_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-526.847",
-                                    strokeDasharray: "172.423px, 1053.79px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M118.07.593s-43.239 95.26 13.455 173.046c97.538 133.837 182.705 41.931 249.401 113.8 51.958 55.981 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-93.357 110.139-90.909 224.968"
                                 stroke="url(#bottom-grid_svg__paint7_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-527.084",
-                                    strokeDasharray: "172.5px, 1054.27px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M125.847.593s-44.39 93.962 12.821 172.414c98.464 135.046 183.326 41.932 250.036 113.801 51.957 55.981 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.454 1.071 98.254-92.722 110.77-90.287 225.599"
                                 stroke="url(#bottom-grid_svg__paint8_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-527.331",
-                                    strokeDasharray: "172.581px, 1054.76px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M133.642.593s-45.54 92.646 12.199 171.801c99.39 136.254 183.961 41.932 250.671 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453 1.071 98.255-92.1 111.384-89.652 226.231"
                                 stroke="url(#bottom-grid_svg__paint9_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-527.593",
-                                    strokeDasharray: "172.667px, 1055.29px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M141.434.593s-46.678 91.347 11.564 171.17c100.316 137.463 184.596 41.931 251.293 113.801 51.957 55.98 47.221 102.222 91.451 148.121 72.082 74.791 302.51.487 303.489 89.453C800.302 621.393 707.766 635.153 710.2 750"
                                 stroke="url(#bottom-grid_svg__paint10_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-527.846",
-                                    strokeDasharray: "172.75px, 1055.79px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M149.214.593s-47.829 90.049 10.929 170.539c101.229 138.671 185.218 41.931 251.928 113.8 51.957 55.981 47.221 102.223 91.451 148.122 72.082 74.791 302.51.487 303.489 89.453 1.072 98.254-90.843 112.646-88.395 227.493"
                                 stroke="url(#bottom-grid_svg__paint11_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-528.112",
-                                    strokeDasharray: "172.837px, 1056.32px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M157.007.593s-48.981 88.732 10.307 169.908c102.155 139.879 185.853 41.931 252.55 113.8 51.957 55.981 47.22 102.222 91.451 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-90.207 113.277-87.76 228.106"
                                 stroke="url(#bottom-grid_svg__paint12_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-528.372",
-                                    strokeDasharray: "172.922px, 1056.84px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M164.787.593s-50.132 87.434 9.671 169.276C277.54 310.957 360.934 211.801 427.643 283.67c51.958 55.981 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.454 1.072 98.254-89.572 113.908-87.138 228.737"
                                 stroke="url(#bottom-grid_svg__paint13_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-528.651",
-                                    strokeDasharray: "173.013px, 1057.4px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M171.58.593s-51.283 86.135 9.036 168.645c104.008 142.296 187.11 41.931 253.82 113.801 51.958 55.98 47.221 102.222 91.452 148.121 72.081 74.791 302.509.487 303.488 89.453 1.072 98.255-88.951 114.54-86.503 229.369"
                                 stroke="url(#bottom-grid_svg__paint14_linear_133_5603)"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-528.936",
-                                    strokeDasharray: "173.106px, 1057.97px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <defs>
                                 <linearGradient
@@ -806,10 +818,7 @@ export default function HeroSection() {
                             </defs>
                         </svg>
                     </div>
-                    <div
-                        className="hero-asset-grid css-1ac2p79-Homepage-mobileGrid"
-                        style={{ zIndex: 99 }}
-                    >
+                    <div className="hero-asset-grid css-1ac2p79-Homepage-mobileGrid" style={{ zIndex: 99 }}>
                         <svg
                             className="bottom-grid-mobile_svg__ui-bottom-grid"
                             viewBox="0 0 392 255"
@@ -821,150 +830,105 @@ export default function HeroSection() {
                                 stroke="url(#bottom-grid-mobile_svg__paint0_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-210.886",
-                                    strokeDasharray: "69.0171px, 421.871px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M32.306 17.686S26.88 59.822 55.528 81.063c49.194 36.469 76.986-4.514 110.835 14.572 26.365 14.867 28.659 32.475 50.942 44.483 36.313 19.565 123.721-33.637 132.262-.888 9.429 36.168-29.981 50.144-18.473 92.28"
                                 stroke="url(#bottom-grid-mobile_svg__paint1_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-210.968",
-                                    strokeDasharray: "69.0442px, 422.037px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M35.492 16.814S29.476 58.6 58.402 80.028c49.683 36.812 77.245-4.585 111.089 14.503 26.365 14.867 28.659 32.475 50.942 44.482 36.313 19.565 123.721-33.636 132.262-.888 9.429 36.169-29.665 50.3-18.161 92.445"
                                 stroke="url(#bottom-grid-mobile_svg__paint2_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.054",
-                                    strokeDasharray: "69.0721px, 422.207px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M38.679 15.943s-6.607 41.428 22.594 63.058c50.172 37.155 77.5-4.654 111.349 14.432 26.365 14.867 28.66 32.475 50.943 44.482 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-29.353 50.464-17.843 92.607"
                                 stroke="url(#bottom-grid-mobile_svg__paint3_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.144",
-                                    strokeDasharray: "69.1016px, 422.388px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M41.86 15.074S34.664 56.15 64.142 77.968c50.661 37.497 77.759-4.725 111.603 14.362 26.365 14.867 28.66 32.475 50.943 44.483 36.313 19.565 123.72-33.637 132.261-.888 9.429 36.168-29.036 50.626-17.526 92.768"
                                 stroke="url(#bottom-grid-mobile_svg__paint4_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.232",
-                                    strokeDasharray: "69.1305px, 422.564px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M45.045 14.202S37.26 54.928 67.011 76.935c51.145 37.841 78.013-4.796 111.862 14.29 26.365 14.868 28.66 32.476 50.943 44.483 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-28.718 50.788-17.215 92.926"
                                 stroke="url(#bottom-grid-mobile_svg__paint5_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.324",
-                                    strokeDasharray: "69.1606px, 422.748px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M48.225 13.333s-8.37 40.367 21.648 62.57c51.634 38.184 78.273-4.866 112.122 14.22 26.365 14.867 28.66 32.475 50.943 44.482 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-28.406 50.952-16.898 93.088"
                                 stroke="url(#bottom-grid-mobile_svg__paint6_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.418",
-                                    strokeDasharray: "69.1914px, 422.936px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M51.412 12.461s-8.96 40.017 21.336 62.407c52.123 38.527 78.532-4.937 112.377 14.15 26.364 14.868 28.659 32.476 50.942 44.483 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-28.089 51.114-16.58 93.25"
                                 stroke="url(#bottom-grid-mobile_svg__paint7_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.515",
-                                    strokeDasharray: "69.2231px, 423.13px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M54.592 11.592s-9.55 39.665 21.018 62.245c52.613 38.869 78.787-5.007 112.637 14.08 26.364 14.866 28.659 32.474 50.942 44.482 36.313 19.565 123.721-33.637 132.262-.888 9.429 36.168-27.772 51.276-16.269 93.413"
                                 stroke="url(#bottom-grid-mobile_svg__paint8_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.617",
-                                    strokeDasharray: "69.2563px, 423.333px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M57.779 10.72S47.638 50.029 78.487 72.809c53.101 39.213 79.046-5.077 112.896 14.009 26.364 14.867 28.659 32.475 50.942 44.482 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-27.461 51.433-15.951 93.576"
                                 stroke="url(#bottom-grid-mobile_svg__paint9_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.724",
-                                    strokeDasharray: "69.2913px, 423.547px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M60.966 9.85S50.24 48.805 81.356 71.775c53.591 39.555 79.306-5.149 113.15 13.939 26.365 14.867 28.66 32.475 50.943 44.482 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-27.144 51.596-15.639 93.74"
                                 stroke="url(#bottom-grid-mobile_svg__paint10_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.827",
-                                    strokeDasharray: "69.3251px, 423.754px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M64.145 8.98S52.83 47.584 84.218 70.743c54.075 39.9 79.56-5.218 113.41 13.868 26.364 14.867 28.659 32.475 50.942 44.483 36.313 19.565 123.721-33.637 132.262-.888 9.429 36.168-26.832 51.758-15.322 93.901"
                                 stroke="url(#bottom-grid-mobile_svg__paint11_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-211.936",
-                                    strokeDasharray: "69.361px, 423.973px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M67.33 8.109s-11.905 38.247 19.761 61.6c54.564 40.242 79.82-5.29 113.664 13.798 26.365 14.867 28.66 32.475 50.943 44.483 36.313 19.564 123.72-33.637 132.261-.888 9.429 36.168-26.514 51.92-15.006 94.056"
                                 stroke="url(#bottom-grid-mobile_svg__paint12_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-212.043",
-                                    strokeDasharray: "69.3958px, 424.185px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M70.512 7.24S58.017 45.134 89.956 68.676c55.053 40.585 80.074-5.36 113.924 13.727 26.364 14.867 28.659 32.475 50.942 44.483 36.313 19.565 123.721-33.637 132.262-.888 9.429 36.168-26.197 52.083-14.695 94.22"
                                 stroke="url(#bottom-grid-mobile_svg__paint13_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-212.157",
-                                    strokeDasharray: "69.4333px, 424.415px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <path
                                 d="M73.29 6.48S60.205 44.025 92.416 67.755c55.542 40.928 80.334-5.43 114.183 13.657 26.365 14.867 28.66 32.475 50.943 44.482 36.313 19.565 123.72-33.636 132.261-.888 9.429 36.169-25.885 52.247-14.377 94.383"
                                 stroke="url(#bottom-grid-mobile_svg__paint14_linear_142_8815)"
                                 strokeWidth="0.5"
                                 strokeMiterlimit={10}
-                                style={{
-                                    strokeDashoffset: "-212.274",
-                                    strokeDasharray: "69.4716px, 424.649px"
-                                }}
+                                className='grid-svg-path'
                             />
                             <defs>
                                 <linearGradient
