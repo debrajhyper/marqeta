@@ -393,3 +393,14 @@ a {
         width: 188px;
     }
 }
+
+.IndexInnovating-titleLine,
+.IndexInnovating-description,
+.IndexInnovating-button {
+    display: inline-block;
+    width: auto;
+    will-change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+}

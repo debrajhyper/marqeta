@@ -1,20 +1,40 @@
+import { useState, useEffect } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import './indexPartnersPartnersWrapper-style.css';
+import peopleImg from '@assets/img/partners/people.jpg';
+import affirmImg from '@assets/img/partners/affirm.svg';
 import symbolSVG from '@assets/svg/symbol/svg/sprite.symbol.svg';
+import WesternUnionImg from '@assets/img/partners/WesternUnion.svg';
+import TomMazzaferroImg from '@assets/img/partners/Tom Mazzaferro.jpeg';
+import { LaptopBreakPoint, TabletBreakPoint, MobileBreakPoint } from "@/constants";
+import { PartnersSliderMobile } from './PartnersSliderMobile';
+import { PartnersSliderDesktop } from './PartnersSliderDesktop';
 import { IndexPartnersPartnersBlockHeadTestimonialsItem } from "./data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function IndexPartnersPartnersWrapper() {
+    const [isDesktop, setDesktop] = useState(window.innerWidth > MobileBreakPoint);
+
+    useEffect(() => {
+        const updateMedia = () => {
+            setDesktop(window.innerWidth > MobileBreakPoint);
+        };
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
     useGSAP(() => {
+        let mediaQuery = gsap.matchMedia();
         gsap.to(".IndexPartners-partnersBlockHeadTitleLine", {
             transform: 'translateY(0)',
             opacity: 1,
             visibility: "visible",
             stagger: 1,
-            duration: 2,
+            duration: 1,
+            delay: 1,
             ease: "power1.out",
             scrollTrigger: {
                 trigger: ".IndexPartners-partnersBlockHeadTitle",
@@ -24,7 +44,87 @@ export function IndexPartnersPartnersWrapper() {
                 toggleActions: "play none none none",
                 onLeaveBack: self => self.disable(),
             },
-        });
+        })
+        gsap.to(".IndexPartners-partnersBlockHeadDescr", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: 1,
+            duration: 1,
+            delay: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexPartners-partnersBlockHeadDescr",
+                start: "top 105%",
+                end: "bottom 110%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        })
+
+
+
+
+        mediaQuery.add({
+            isDesktop: `(min-width: ${LaptopBreakPoint}px)`,
+            isLaptop: `(max-width: ${LaptopBreakPoint - 1}px) and (min-width: ${TabletBreakPoint + 1}px)`,
+            isTablet: `(max-width: ${TabletBreakPoint}px) and (min-width: ${MobileBreakPoint + 1}px)`,
+            isMobile: `(max-width: ${MobileBreakPoint}px)`,
+        }, (context) => {
+            let {isMobile } = context.conditions;
+            gsap.to(".IndexPartners-partnersBlockHeadTestimonialsItem", {
+                transform: 'translateY(0)',
+                opacity: isMobile ? 0 : 1,
+                visibility: "visible",
+                stagger: 1,
+                duration: 1,
+                delay: 1,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: ".IndexPartners-partnersBlockHeadTestimonials",
+                    start: "top 85%",
+                    end: "bottom 110%",
+                    scrub: 1,
+                    toggleActions: "play none none none",
+                    onLeaveBack: self => self.disable(),
+                },
+            })
+            gsap.to(".IndexPartners-partnersBlock--0", {
+                transform: 'translateY(0)',
+                opacity: isMobile ? 0 : 1,
+                visibility: "visible",
+                stagger: 1,
+                duration: 1,
+                delay: 1,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: ".IndexPartners-partnersBlock--0",
+                    start: "top 95%",
+                    end: "bottom 130%",
+                    scrub: 1,
+                    toggleActions: "play none none none",
+                    onLeaveBack: self => self.disable(),
+                },
+            })
+            gsap.to(".IndexPartners-partnersBlock--1", {
+                transform: 'translateY(0)',
+                opacity: isMobile ? 0 : 1,
+                visibility: "visible",
+                stagger: 1,
+                duration: 1,
+                delay: 1,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: ".IndexPartners-partnersBlock--1",
+                    start: "top 82%",
+                    end: "bottom 150%",
+                    scrub: 1,
+                    toggleActions: "play none none none",
+                    onLeaveBack: self => self.disable(),
+                },
+            })
+        })
     });
 
     return (
@@ -60,107 +160,29 @@ export function IndexPartnersPartnersWrapper() {
                     }
                 </div>
             </div>
-            <div className="IndexPartners-partnersSlider isSectionShown" style={{}}>
-                <div className="IndexPartners-partnersSliderItem">
-                    <div className="IndexPartners-partnersSliderItemImg">
-                        <img
-                            data-lazy="true"
-                            data-src="/static/img/partners/card-1.png"
-                            alt="Card graphic 1"
-                            src="/static/img/partners/card-1.png"
-                        />
-                    </div>
-                </div>
-                <div className="IndexPartners-partnersSliderItem">
-                    <div className="IndexPartners-partnersSliderItemImg">
-                        <img
-                            data-lazy="true"
-                            data-src="/static/img/partners/card-2.png"
-                            alt="Card graphic 2"
-                            src="/static/img/partners/card-2.png"
-                        />
-                    </div>
-                </div>
-                <div className="IndexPartners-partnersSliderItem">
-                    <div className="IndexPartners-partnersSliderItemImg">
-                        <img
-                            data-lazy="true"
-                            data-src="/static/img/partners/WU_Card.svg"
-                            alt="Card graphic 3"
-                            src="/static/img/partners/WU_Card.svg"
-                        />
-                        <div
-                            data-href="HUMRGEmqXLI"
-                            className="IndexPartners-partnersSliderItemExtra play-video"
-                        >
-                            <div className="IndexPartners-partnersSliderItemExtraInner">
-                                <img
-                                    data-lazy="true"
-                                    data-src="/static/img/partners/partners-video-3.png"
-                                    alt="Partners video graphic"
-                                    src="/static/img/partners/partners-video-3.png"
-                                />
-                                <div className="IndexPartners-partnersSliderItemExtraIcon">
-                                    <svg className="svg svg--icon-play ">
-                                        <use xlinkHref="/static/svg/symbol/svg/sprite.symbol.svg#icon-play" />
+            {
+                isDesktop ? <PartnersSliderDesktop /> : <PartnersSliderMobile />
+            }
+            <div className="IndexPartners-partnersBlocks" style={{ minHeight: isDesktop ? 0 : 442 }}>
+                <div className="IndexPartners-partnersBlockHeadTestimonials IndexPartners-partnersBlockHeadTestimonials--mobile IndexPartners-slide isActive isSectionShown">
+                    {
+                        IndexPartnersPartnersBlockHeadTestimonialsItem.map((text, index) => (
+                            <div key={index} className="IndexPartners-partnersBlockHeadTestimonialsItem">
+                                <div className="IndexPartners-partnersBlockHeadTestimonialsItemIcon">
+                                    <svg className="svg svg--icon-partners-item ">
+                                        <use xlinkHref={`${symbolSVG}#icon-partners-item`} />
                                     </svg>
-                                    <span>Watch video</span>
+                                </div>
+                                <div className="IndexPartners-partnersBlockHeadTestimonialsItemText">
+                                    {text}
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
-            </div>
-            <div className="IndexPartners-partnersBlocks" style={{ minHeight: 0 }}>
-                <div
-                    className="IndexPartners-partnersBlockHeadTestimonials IndexPartners-partnersBlockHeadTestimonials--mobile IndexPartners-slide isActive isSectionShown"
-                    data-id={0}
-                    id={0}
-                    style={{}}
-                >
-                    <div className="IndexPartners-partnersBlockHeadTestimonialsItem">
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemIcon">
-                            <svg className="svg svg--icon-partners-item ">
-                                <use xlinkHref="/static/svg/symbol/svg/sprite.symbol.svg#icon-partners-item" />
-                            </svg>
-                        </div>
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemText">
-                            10+ years of modern card issuing experience
-                        </div>
-                    </div>
-                    <div className="IndexPartners-partnersBlockHeadTestimonialsItem">
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemIcon">
-                            <svg className="svg svg--icon-partners-item ">
-                                <use xlinkHref="/static/svg/symbol/svg/sprite.symbol.svg#icon-partners-item" />
-                            </svg>
-                        </div>
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemText">
-                            Compliance &amp; risk experts
-                        </div>
-                    </div>
-                    <div className="IndexPartners-partnersBlockHeadTestimonialsItem">
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemIcon">
-                            <svg className="svg svg--icon-partners-item ">
-                                <use xlinkHref="/static/svg/symbol/svg/sprite.symbol.svg#icon-partners-item" />
-                            </svg>
-                        </div>
-                        <div className="IndexPartners-partnersBlockHeadTestimonialsItemText">
-                            Top 25 largest U.S. debit card purchase volume*
-                        </div>
-                    </div>
-                </div>
-                <div
-                    className="IndexPartners-partnersBlock IndexPartners-partnersBlock--0 IndexPartners-slide isSectionShown"
-                    data-id={1}
-                    id={1}
-                >
+                <div className="IndexPartners-partnersBlock IndexPartners-partnersBlock--0 IndexPartners-slide isSectionShown">
                     <div className="IndexPartners-partnersBlockLogo">
-                        <img
-                            data-lazy="true"
-                            data-src="/static/img/partners/affirm.svg"
-                            alt="Partners - Affirm"
-                            src="/static/img/partners/affirm.svg"
-                        />
+                        <img data-lazy="true" data-src={affirmImg} alt="Partners-Affirm" src={affirmImg} />
                     </div>
                     <div className="IndexPartners-partnersBlockDescr">
                         “Affirm’s mission is to build innovative products that people love, and
@@ -169,12 +191,7 @@ export function IndexPartnersPartnersWrapper() {
                     </div>
                     <div className="IndexPartners-partnersBlockTestimonials">
                         <div className="IndexPartners-partnersBlockTestimonialsIcon">
-                            <img
-                                data-lazy="true"
-                                data-src="/static/img/partners/people.jpg"
-                                alt="Partners people"
-                                src="/static/img/partners/people.jpg"
-                            />
+                            <img data-lazy="true" data-src={peopleImg} alt="Partners people" src={peopleImg} />
                         </div>
                         <div className="IndexPartners-partnersBlockTestimonialsText">
                             <div className="IndexPartners-partnersBlockTestimonialsTextName">
@@ -186,18 +203,9 @@ export function IndexPartnersPartnersWrapper() {
                         </div>
                     </div>
                 </div>
-                <div
-                    className="IndexPartners-partnersBlock IndexPartners-partnersBlock--1 IndexPartners-slide isSectionShown"
-                    data-id={2}
-                    id={2}
-                >
+                <div className="IndexPartners-partnersBlock IndexPartners-partnersBlock--1 IndexPartners-slide isSectionShown">
                     <div className="IndexPartners-partnersBlockLogo">
-                        <img
-                            data-lazy="true"
-                            data-src="/static/img/partners/WesternUnion.svg"
-                            alt="Partners - Doordash"
-                            src="/static/img/partners/WesternUnion.svg"
-                        />
+                        <img data-lazy="true" data-src={WesternUnionImg} alt="Partners-Doordash" src={WesternUnionImg} />
                     </div>
                     <div className="IndexPartners-partnersBlockDescr">
                         “We have seen Marqeta be the trusted advisor for us on not just issuing
@@ -208,12 +216,7 @@ export function IndexPartnersPartnersWrapper() {
                     </div>
                     <div className="IndexPartners-partnersBlockTestimonials">
                         <div className="IndexPartners-partnersBlockTestimonialsIcon">
-                            <img
-                                data-lazy="true"
-                                data-src="/static/img/partners/Tom Mazzaferro.jpeg"
-                                alt="Mike Kim photo"
-                                src="/static/img/partners/Tom Mazzaferro.jpeg"
-                            />
+                            <img data-lazy="true" data-src={TomMazzaferroImg} alt="Mike Kim photo" src={TomMazzaferroImg} />
                         </div>
                         <div className="IndexPartners-partnersBlockTestimonialsText">
                             <div className="IndexPartners-partnersBlockTestimonialsTextName">

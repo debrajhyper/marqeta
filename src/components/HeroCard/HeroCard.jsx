@@ -30,6 +30,7 @@ export function HeroCard() {
           skewX: -4,
           skewY: 0,
           scale: 1,
+          opacity: 1,
           borderRadius: isMobile ? '10px' : '15px 22px'
         },
         {
@@ -44,7 +45,7 @@ export function HeroCard() {
           width: isDesktop ? 280 : isLaptop ? 249 : isTablet ? 191 : 205,
           height: isDesktop ? 450 : isLaptop ? 408 : isTablet ? 310 : 333,
           duration: 1,
-          opacity: isMobile ? 0.1 : 1,
+          opacity: isMobile ? 0 : 1,
           scrollTrigger: {
             trigger: "#hero-card",
             start: isDesktop ? "top, 27%" : isLaptop ? "top, 27%" : isTablet ? "top, 20%" : "top, 20%",

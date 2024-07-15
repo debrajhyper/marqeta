@@ -184,7 +184,7 @@ section {
     will-Change: opacity, transform;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 
 .IndexFeatures-list-titleLine {
@@ -193,7 +193,7 @@ section {
     will-Change: opacity, transform;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 
 .IndexFeatures-list-descriptionLine {

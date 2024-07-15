@@ -1,51 +1,79 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 import './indexInnovating-style.css';
 import cardShadow from '@assets/img/innovating/card-shadow.png';
 import footerPhone from '@assets/img/innovating/footer-phone.png';
+import { BackgroundSVG } from './BackgroundSVG';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function IndexInnovating() {
+    useGSAP(() => {
+        gsap.to(".IndexInnovating-titleLine", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: 1,
+            duration: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexInnovating-title",
+                start: "top 80%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
+        gsap.to(".IndexInnovating-description", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: 1,
+            duration: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexInnovating-description",
+                start: "top 80%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
+        gsap.to(".IndexInnovating-button", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: 1,
+            duration: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexInnovating-button",
+                start: "top 80%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
+    })
+
     return (
         <section className="IndexInnovating isSectionShown" data-view="IndexInnovating">
             <div className="IndexInnovating-background">
-                <svg
-                    viewBox="0 0 1440 2555"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                >
-                    <g fill="#2A206A" fillRule="evenodd">
-                        <path
-                            d="M0,179.533433 L1269.95827,26.6366347 C1321.31182,20.4539176 1373.06364,34.4071763 1414.34893,65.5670532 L1440,84.9270814 L1440,84.9270814 L1440,665 L0,665 L0,179.533433 Z"
-                            transform="matrix(-1 0 0 1 1440 0)"
-                        />
-                        <rect y={563} width={1440} height={2030} />
-                    </g>
-                </svg>
+                <BackgroundSVG />
             </div>
             <div className="IndexInnovating-wrapper">
                 <div className="IndexInnovating-titleWrapper">
-                    <h2
-                        className="IndexInnovating-title isSectionShown"
-                        style={{ opacity: 1 }}
-                    >
-                        <span
-                            className="IndexInnovating-titleLine"
-                            style={{
-                                display: "inline-block",
-                                width: "auto",
-                                willChange: "opacity, transform"
-                            }}
-                        >
-                            Start innovating{" "}
+                    <h2 className="IndexInnovating-title isSectionShown" style={{ opacity: 1 }}>
+                        <span className="IndexInnovating-titleLine">
+                            Start innovating
                         </span>
                         <br />
-                        <span
-                            className="IndexInnovating-titleLine"
-                            style={{
-                                display: "inline-block",
-                                width: "auto",
-                                willChange: "opacity, transform"
-                            }}
-                        >
-                            with&nbsp;Marqeta&nbsp;today{" "}
+                        <span className="IndexInnovating-titleLine">
+                            with Marqeta today
                         </span>
                     </h2>
                     <div className="IndexInnovating-description isSectionShown">

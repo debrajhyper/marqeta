@@ -1084,15 +1084,22 @@ a {
 #swap-title {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 
 #swap-text {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(30px);
     padding: 0;
     transition: all 0.1s;
+}
+
+.v-slides {
+    /* transform: translateY(20px); */
+    /* padding: 0; */
+    /* transition: all 0.1s; */
+    /* color: #20A472 */
 }
 
 #page-subtitle {

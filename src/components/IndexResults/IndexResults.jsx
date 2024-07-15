@@ -1,110 +1,87 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 import './indexResults-style.css';
 import AwardsUpdate from '@assets/img/Awards_Update.svg';
 import AwardsUpdateMobile from '@assets/img/Awards_Update_Mobile.svg';
+import { IndexResultsCard, IndexResultsCardsCount, IndexResultsFact, IndexResultsTitleWord } from './data';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function IndexResults() {
+    useGSAP(() => {
+        gsap.to(".IndexResults-titleWord", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: 1,
+            duration: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexResults-title",
+                start: "top 75%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
+    })
+
     return (
         <section className="IndexResults" data-view="IndexResults">
             <div className="IndexResults-flex">
                 <div className="IndexResults-wrapper">
                     <div className="IndexResults-titleBlock">
-                        <h2
-                            className="IndexResults-title isSectionShown"
-                            style={{ opacity: 1 }}
-                        >
-                            <span
-                                className="IndexResults-titleWord"
-                                style={{ display: "inline-block", whiteSpace: "pre" }}
-                            >
-                                The
-                            </span>
-                            <span
-                                className="IndexResults-titleWord"
-                                style={{ display: "inline-block", whiteSpace: "pre" }}
-                            >
-                                {" "}
-                                results
-                            </span>
-                            <span
-                                className="IndexResults-titleWord"
-                                style={{ display: "inline-block", whiteSpace: "pre" }}
-                            >
-                                {" "}
-                                speak
-                            </span>
-                            <span
-                                className="IndexResults-titleWord"
-                                style={{ display: "inline-block", whiteSpace: "pre" }}
-                            >
-                                {" "}
-                                for
-                            </span>
-                            <span
-                                className="IndexResults-titleWord"
-                                style={{ display: "inline-block", whiteSpace: "pre" }}
-                            >
-                                {" "}
-                                themselves
-                            </span>
+                        <h2 className="IndexResults-title isSectionShown" style={{ opacity: 1 }}>
+                            {
+                                IndexResultsTitleWord.map((item, index) => (
+                                    <span key={index} className="IndexResults-titleWord">
+                                        {item}
+                                    </span>
+                                ))
+                            }
                         </h2>
                     </div>
                     <div className="IndexResults-cards">
                         <div className="IndexResults-cardsCount isSectionShown">
-                            <span>160</span>
-                            <span>.000</span>
-                            <span>.000</span>
-                            <span>.000</span>
-                            <span>+</span>
+                            {
+                                IndexResultsCardsCount.map((item, index) => (
+                                    <span key={index} className={index > 0 & index < 3 ? 'count' : null}>{item}</span>
+                                ))
+                            }
                         </div>
                         <div className="IndexResults-cardsText isSectionShown">
                             volume processed in 2022
                         </div>
                     </div>
                     <div className="IndexResults-facts isSectionShown">
-                        <div className="IndexResults-fact">
-                            <div className="IndexResults-factTitle">99.99%</div>
-                            <div className="IndexResults-factDescription">
-                                platform uptime in 2022
-                            </div>
-                        </div>
-                        <div className="IndexResults-fact">
-                            <div className="IndexResults-factTitle">40</div>
-                            <div className="IndexResults-factDescription">
-                                countries certified to operate
-                            </div>
-                        </div>
-                        <div className="IndexResults-fact">
-                            <div className="IndexResults-factTitle">80X</div>
-                            <div className="IndexResults-factDescription">
-                                growth in volume since 2017
-                            </div>
-                        </div>
+                        {
+                            IndexResultsFact.map((item, index) => {
+                                const { number, text } = item;
+                                return (
+                                    <div key={index} className="IndexResults-fact">
+                                        <div className="IndexResults-factTitle">{number}</div>
+                                        <div className="IndexResults-factDescription">
+                                            {text}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                     <div className="IndexResults-bestPlace">
-                        <img
-                            src={AwardsUpdate}
-                            className="desktop"
-                            alt="Awards received: Forbes, Fast Company, CNBC"
-                        />
-                        <img
-                            src={AwardsUpdateMobile}
-                            className="mobile"
-                            alt="Awards received: Forbes, Fast Company, CNBC"
-                        />
+                        <img src={AwardsUpdate} className="desktop" alt="Awards received: Forbes, Fast Company, CNBC" />
+                        <img src={AwardsUpdateMobile} className="mobile" alt="Awards received: Forbes, Fast Company, CNBC" />
                     </div>
                 </div>
             </div>
-            
             <div className="IndexResults-canvas">
                 <canvas width="1898.75" height={2990} style={{ height: 2392 }} />
                 <div className="IndexResults-card" data-tp="placeholder">
                     <div className="IndexResults-card-inner">
-                        <div
-                            className="IndexResults-card-inner-container"
-                            style={{ height: "2435.18px" }}
-                        >
-                            <div
-                                className="IndexResults-card-inner-container-block"
+                        <div className="IndexResults-card-inner-container" style={{ height: "2435.18px" }}>
+                            <div className="IndexResults-card-inner-container-block"
                                 style={{
                                     width: 770,
                                     height: 770,
@@ -112,10 +89,7 @@ export function IndexResults() {
                                     top: 20
                                 }}
                             >
-                                <div
-                                    className="IndexResultsCard"
-                                    data-assets-folder="/static/img/3d/IndexResultsCard/"
-                                >
+                                <div className="IndexResultsCard">
                                     <canvas
                                         width={383}
                                         height={608}
@@ -133,26 +107,17 @@ export function IndexResults() {
                         </div>
                     </div>
                 </div>
-                <div className="IndexResults-card" data-tp="uber">
-                    <div className="IndexResults-card-logo" />
-                </div>
-                <div className="IndexResults-card" data-tp="square">
-                    <div className="IndexResults-card-logo" />
-                </div>
-                <div className="IndexResults-card" data-tp="instacart">
-                    <div className="IndexResults-card-logo" />
-                </div>
-                <div className="IndexResults-card" data-tp="brex">
-                    <div className="IndexResults-card-logo" />
-                </div>
-                <div className="IndexResults-card" data-tp="doordash">
-                    <div className="IndexResults-card-logo" />
-                </div>
+                {
+                    IndexResultsCard.map((item, index) => (
+                        <div key={index} className="IndexResults-card" data-tp={item}>
+                            <div className="IndexResults-card-logo" />
+                        </div>
+                    ))
+                }
                 <div className="IndexResults-mobile-card">
                     <div className="IndexResults-mobile-card-inner" />
                 </div>
             </div>
         </section>
-
     )
 }

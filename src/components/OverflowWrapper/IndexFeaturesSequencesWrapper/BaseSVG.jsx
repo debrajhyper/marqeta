@@ -46,5 +46,5 @@ export default function BaseSVG({ svgType }) {
 }
 
 BaseSVG.propTypes = {
-    svgType: PropTypes.oneOf(['funding', 'controls']).isRequired
+    svgType: PropTypes.oneOf(['funding', 'controls', 'widgets', 'cards']).isRequired
 };

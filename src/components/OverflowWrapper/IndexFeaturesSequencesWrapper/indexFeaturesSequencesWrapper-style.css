@@ -586,6 +586,7 @@ a {
     .IndexFeatures-sequences-aspect {
         height: auto;
         padding-top: 0;
+        z-index: 1;
     }
 }
 

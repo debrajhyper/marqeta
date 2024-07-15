@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -21,12 +21,12 @@ export function HeroSection() {
     const vSlideRef = useRef(null);
 
     useGSAP(() => {
-        let mediaQuery = gsap.matchMedia()
+        let mediaQuery = gsap.matchMedia();
 
-        gsap.to("#swap-title", { opacity: 1, y: 0, visibility: "visible", delay: 2.3 })
-        gsap.to("#swap-text", { opacity: 1, y: 0, visibility: "visible", delay: 2.3 })
-        gsap.to("#page-subtitle", { opacity: 1, visibility: "visible", delay: 2.3 })
-        gsap.to("#page-button", { opacity: 1, visibility: "visible", delay: 2.3 })
+        gsap.to("#swap-title", { opacity: 1, y: 0, visibility: "visible", delay: 1 })
+        gsap.to("#swap-text", { opacity: 1, y: 0, visibility: "visible", delay: 1.5 })
+        gsap.to("#page-subtitle", { opacity: 1, visibility: "visible", delay: 1 })
+        gsap.to("#page-button", { opacity: 1, visibility: "visible", delay: 1 })
         gsap.fromTo(".grid-svg-path",
             {
                 strokeDashoffset: "-610.244px",
@@ -56,7 +56,7 @@ export function HeroSection() {
                     duration: 1,
                     scrollTrigger: {
                         trigger: "#hero-photo",
-                        start: isDesktop ? "top, 33%" : isLaptop ? "top, 32%" : isTablet ? "top, 30%" : "top, 24%",
+                        start: isDesktop ? "top, 33%" : isLaptop ? "top, 32%" : isTablet ? "top, 30%" : "top, 20%",
                         scrub: 1,
                     }
                 })
@@ -79,7 +79,7 @@ export function HeroSection() {
             })
     }, [])
 
-    useGSAP(() => {
+    useLayoutEffect(() => {
         const slides = slidesRef.current;
         const list = listRef.current;
 
@@ -93,7 +93,7 @@ export function HeroSection() {
         const progress = vSlideRef.current ? vSlideRef.current.progress() : 0;
 
         if (vSlideRef.current) {
-            vSlideRef.current.revert();
+            vSlideRef.current.kill();
         }
 
         const vSlide = gsap.timeline({
@@ -113,7 +113,7 @@ export function HeroSection() {
                         delay: 2,
                         y: i * -1 * vsOpts.lineHeight,
                         ease: 'power4.inOut',
-                        color: i === vsOpts.list.children.length - 1 ? '#2a206a' : '#20A472',
+                        color: i === vsOpts.list.children.length - 1 ? '#2a206a' : '#20a472',
                         transition: i === vsOpts.list.children.length - 1 ? 'color 2s' : 'none',
                     },
                     label
@@ -123,6 +123,7 @@ export function HeroSection() {
 
         vSlide.progress(progress);
         vSlideRef.current = vSlide;
+
 
         return () => {
             if (vSlideRef.current) {
@@ -155,7 +156,11 @@ export function HeroSection() {
                                     ref={listRef}
                                 >
                                     {
-                                        textArray?.map((item, index) => <div className="v-slide" key={index} ref={el => slidesRef.current[index] = el} style={{ height: 65 }}>{item}</div>)
+                                        textArray?.map((item, index) => (
+                                            <div className="v-slide" key={index} ref={el => slidesRef.current[index] = el} style={{ height: 65 }}>
+                                                {item}
+                                            </div>
+                                        ))
                                     }
                                 </div>
                             </span>
