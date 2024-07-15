@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@bsmnt/scrollytelling": "^0.3.3",
     "@dotlottie/player-component": "^2.7.12",
     "@gsap/react": "^2.1.1",
     "@lottiefiles/dotlottie-react": "^0.7.2",
     "gsap": "^3.12.5",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-owl-carousel": "^2.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

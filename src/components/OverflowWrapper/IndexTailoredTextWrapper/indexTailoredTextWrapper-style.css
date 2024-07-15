@@ -1,0 +1,211 @@
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.PageIndex-content h2 {
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+.IndexTailored-textWrapper {
+    margin-left: auto;
+    position: sticky;
+    top: 0;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: 100vh;
+    padding-top: 200px;
+    -webkit-transition: -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1440px) {
+    .IndexTailored-textWrapper {
+        width: 540px;
+        margin-right: 90px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexTailored-textWrapper {
+        width: 37.5vw;
+        margin-right: 6.25vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexTailored-textWrapper {
+        width: 37.5vw;
+        margin-right: 8.33333333vw;
+    }
+}
+
+@media (min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-textWrapper {
+        margin: 0 40px;
+    }
+}
+
+@media (max-width: 367px) {
+    .IndexTailored-textWrapper {
+        margin: 0 auto;
+        width: 288px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-textWrapper {
+        position: relative;
+        padding-top: 0;
+        height: auto;
+        min-height: inherit;
+        margin-top: -620px;
+        padding-bottom: 60px;
+    }
+}
+
+.IndexTailored-title {
+    font-family: Graphik, Helvetiva, sans-serif;
+    color: #fff;
+    font-size: 40px;
+    letter-spacing: -0.7px;
+    line-height: 54px;
+    font-weight: 400;
+}
+
+@media (min-width: 1440px) {
+    .IndexTailored-title {
+        width: calc(100% - 90px);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexTailored-title {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexTailored-title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-title {
+        font-size: 26px;
+        letter-spacing: -0.47px;
+        line-height: 34px;
+        text-align: center;
+    }
+}
+
+.IndexTailored-items {
+    width: 100%;
+}
+
+@media (min-width: 1440px) {
+    .IndexTailored-items {
+        margin-top: 73px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px),
+(min-width: 1024px) and (max-width: 1439px) {
+    .IndexTailored-items {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-items {
+        margin-top: 50px;
+    }
+}
+
+.IndexTailored-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    color: #fff;
+    font-family: Graphik, Helvetiva, sans-serif;
+    font-size: 18px;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+    padding: 30px 0 31px;
+}
+
+.IndexTailored-item:first-child {
+    padding: 0 0 31px;
+    border-top: none;
+}
+
+.IndexTailored-item.isActive .IndexTailored-itemTitle {
+    color: #1cc283;
+}
+
+.IndexTailored-item.isHide {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 30px, 0);
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 1023px),
+(min-width: 1024px) and (max-width: 1439px) {
+    .IndexTailored-item {
+        display: block;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-item {
+        margin-top: 384px;
+        border-top: none;
+    }
+}
+
+.IndexTailored-itemTitle {
+    letter-spacing: -0.41px;
+    line-height: 30px;
+    font-weight: 500;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-itemTitle {
+        color: #1cc283;
+    }
+}
+
+.IndexTailored-itemDescription {
+    letter-spacing: 0;
+    line-height: 30px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 60%;
+    flex: 0 0 60%;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 1023px),
+(min-width: 1024px) and (max-width: 1439px) {
+    .IndexTailored-itemDescription {
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,756 @@
+/*! CSS Used from: Embedded */
+.css-xvkuif-Homepage-root img {
+    max-width: 100%;
+}
+
+.css-xvkuif-Homepage-root .IndexResults-bestPlace img.mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .css-xvkuif-Homepage-root .IndexResults-bestPlace img.mobile {
+        display: block;
+        margin: auto;
+    }
+
+    .css-xvkuif-Homepage-root .IndexResults-bestPlace img.desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px),
+(max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .css-xvkuif-Homepage-root .IndexResults-bestPlace {
+        text-align: right;
+    }
+
+    .css-xvkuif-Homepage-root .IndexResults-bestPlace img {
+        width: 85%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .css-xvkuif-Homepage-root .IndexResults-cardsCount {
+        font-size: 69px !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1270px) {
+    .css-xvkuif-Homepage-root .IndexResults-cardsCount {
+        font-size: 56px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .css-xvkuif-Homepage-root .IndexResults-facts {
+        margin-left: 30px;
+    }
+}
+
+/*! CSS Used from: Embedded */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.PageIndex-content h2 {
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+.IndexResults {
+    background: -webkit-gradient(linear, left top, left bottom, from(#2a206a), color-stop(38%, #2a206a), color-stop(70%, #443794), to(#443794));
+    background: linear-gradient(180deg, #2a206a, #2a206a 38%, #443794 70%, #443794);
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#332878), color-stop(20%, #443794), to(#443794));
+        background-image: linear-gradient(180deg, #332878, #443794 20%, #443794);
+        padding-top: 60px;
+    }
+}
+
+.IndexResults-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: Graphik, Helvetiva, sans-serif;
+}
+
+@media (min-width: 1440px) {
+    .IndexResults-flex {
+        width: 1280px;
+        margin: 0 auto;
+    }
+}
+
+.IndexResults-wrapper {
+    max-width: 1440px;
+    margin-top: 173px;
+    width: 630px;
+    margin-left: auto;
+    margin-right: 180px;
+}
+
+@media (min-width: 1440px) {
+    .IndexResults-wrapper {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-wrapper {
+        width: 43.75vw;
+        margin-right: 12.5vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-wrapper {
+        width: 58.33333333vw;
+        margin-right: 8.33333333vw;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-wrapper {
+        width: 100%;
+    }
+}
+
+@media (min-width: 368px) and (max-width: 767px) {
+    .IndexResults-wrapper {
+        margin: 0 40px;
+    }
+}
+
+@media (max-width: 367px) {
+    .IndexResults-wrapper {
+        margin: 0 auto;
+        width: 288px;
+    }
+}
+
+.IndexResults-titleBlock {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+.IndexResults-title {
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: -0.7px;
+    text-align: right;
+    line-height: 54px;
+    font-weight: 400;
+    width: 450px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-title {
+        width: 31.25vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-title {
+        width: 50vw;
+        font-size: 30px;
+        letter-spacing: -0.52px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-title {
+        width: 100%;
+        text-align: center;
+        font-size: 26px;
+        letter-spacing: -0.47px;
+        line-height: 34px;
+    }
+}
+
+.IndexResults-cards {
+    margin-top: 86px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-cards {
+        margin-top: 50px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-cards {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-cards {
+        margin-top: 40px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+}
+
+.IndexResults-cardsCount {
+    color: #1cc283;
+    font-size: 78px;
+    letter-spacing: -3.48px;
+    line-height: 80px;
+    font-weight: 300;
+    position: relative;
+}
+
+.IndexResults-cardsCount::before {
+    content: '$';
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-cardsCount {
+        font-size: 80px;
+        letter-spacing: -2.78px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-cardsCount {
+        font-size: 55px;
+        letter-spacing: -2.23px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-cardsCount {
+        font-size: 38.57px;
+        color: #1cc283;
+        letter-spacing: -1.65px;
+        line-height: 38.85px;
+    }
+}
+
+@media (max-width: 400px) {
+    .IndexResults-cardsCount {
+        font-size: 32.57px;
+    }
+}
+
+.IndexResults-cardsCount.isInitialState span:last-child,
+.IndexResults-cardsCount.isInitialState span:nth-child(2),
+.IndexResults-cardsCount.isInitialState span:nth-child(3) {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 30px, 0);
+}
+
+.IndexResults-cardsCount span {
+    display: inline-block;
+}
+
+.IndexResults-cardsCount span:last-child {
+    position: absolute;
+    left: 100%;
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-transition-delay: 1s;
+    transition-delay: 1s;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-cardsCount span:last-child {
+        position: relative;
+        left: auto;
+    }
+}
+
+.IndexResults-cardsCount span:nth-child(2),
+.IndexResults-cardsCount span:nth-child(3) {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.IndexResults-cardsCount span:nth-child(3) {
+    -webkit-transition-delay: 30ms;
+    transition-delay: 30ms;
+}
+
+.IndexResults-cardsText {
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0;
+    text-align: right;
+    line-height: 26px;
+    margin-top: 13px;
+    -webkit-transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-cardsText {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-cardsText {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-cardsText {
+        font-size: 14px;
+        line-height: 26px;
+        margin-top: 8px;
+    }
+}
+
+.IndexResults-cardsText.isInitialState {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 30px, 0);
+}
+
+.IndexResults-facts {
+    margin-top: 72px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) and (max-width: 1023px),
+(min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-facts {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-facts {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-top: 31px;
+    }
+}
+
+.IndexResults-fact {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-fact:first-child {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 42.85714286%;
+        flex: 0 0 42.85714286%;
+    }
+
+    .IndexResults-fact:nth-child(2) {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 57.14285714%;
+        flex: 0 0 57.14285714%;
+    }
+
+    .IndexResults-fact:last-child {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-fact {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+    }
+
+    .IndexResults-fact:last-child {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-fact {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .IndexResults-fact:last-child {
+        margin-top: 25px;
+    }
+}
+
+.IndexResults-fact:nth-child(2) {
+    -webkit-transition-delay: 30ms;
+    transition-delay: 30ms;
+}
+
+.IndexResults-fact:nth-child(3) {
+    -webkit-transition-delay: 60ms;
+    transition-delay: 60ms;
+}
+
+.isInitialState .IndexResults-fact {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 30px, 0);
+}
+
+.IndexResults-factTitle {
+    color: #1cc283;
+    font-size: 40px;
+    letter-spacing: -1.39px;
+    text-align: right;
+    line-height: 60px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-factTitle {
+        font-size: 40px;
+        letter-spacing: -1.04px;
+        line-height: 40px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-factTitle {
+        font-size: 30px;
+        letter-spacing: -1.04px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-factTitle {
+        font-size: 26px;
+        letter-spacing: -0.9px;
+        text-align: center;
+        line-height: 30px;
+    }
+}
+
+.IndexResults-factDescription {
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-factDescription {
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-factDescription {
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-factDescription {
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+.IndexResults-bestPlace {
+    margin-top: 83px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-bestPlace {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-bestPlace {
+        margin-top: 32px;
+    }
+}
+
+.IndexResults-canvas {
+    position: relative;
+    width: 100%;
+    font-size: 0;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.IndexResults-canvas canvas {
+    width: 100%;
+}
+
+@media (min-width: 1920px) {
+    .IndexResults-canvas {
+        margin-top: -863px;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .IndexResults-canvas {
+        margin-top: -768px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexResults-canvas {
+        margin-top: -560px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexResults-canvas {
+        margin-top: -419px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-canvas {
+        margin-top: 66.5625vw;
+    }
+}
+
+.IndexResults-card {
+    position: absolute;
+    height: 0;
+    top: 0;
+    left: -2.96875%;
+    padding-top: 32.8125%;
+    width: 21.19791667%;
+    will-change: transform;
+}
+
+.IndexResults-card-inner {
+    position: absolute;
+    left: 2.45700246%;
+    right: 2.45700246%;
+    top: 1.58730159%;
+    bottom: 1.58730159%;
+}
+
+.IndexResults-card-inner-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.IndexResults-card-inner-container-block {
+    top: 0;
+    position: sticky;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-card {
+        display: none;
+    }
+}
+
+.IndexResults-card[data-tp='placeholder'] {
+    left: 18.22916667%;
+    padding-top: 45%;
+}
+
+.IndexResults-card[data-tp='uber'] {
+    -webkit-transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translate(0);
+}
+
+.IndexResults-card[data-tp='square'] {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.IndexResults-card[data-tp='instacart'] {
+    -webkit-transform: translate(100%, 137.14285714%);
+    -ms-transform: translate(100%, 137.14285714%);
+    transform: translate(100%, 137.14285714%);
+}
+
+.IndexResults-card[data-tp='brex'] {
+    -webkit-transform: translate(200%, 174.28571429%);
+    -ms-transform: translate(200%, 174.28571429%);
+    transform: translate(200%, 174.28571429%);
+}
+
+.IndexResults-card[data-tp='doordash'] {
+    -webkit-transform: translate(300%, 211.42857143%);
+    -ms-transform: translate(300%, 211.42857143%);
+    transform: translate(300%, 211.42857143%);
+}
+
+.IndexResults-card[data-tp='uber'] .IndexResults-card-logo {
+    background-image: url(https://www.marqeta.com/static/img/results/uber.svg);
+    height: 4.74683544%;
+}
+
+.IndexResults-card[data-tp='square'] .IndexResults-card-logo {
+    background-image: url(https://www.marqeta.com/static/img/results/square.svg);
+    height: 5.37974684%;
+}
+
+.IndexResults-card[data-tp='instacart'] .IndexResults-card-logo {
+    background-image: url(https://www.marqeta.com/static/img/results/instacart.svg);
+    height: 5.37974684%;
+}
+
+.IndexResults-card[data-tp='brex'] .IndexResults-card-logo {
+    background-image: url(https://www.marqeta.com/static/img/results/brex.svg);
+    height: 5.85443038%;
+}
+
+.IndexResults-card[data-tp='doordash'] .IndexResults-card-logo {
+    background-image: url(https://www.marqeta.com/static/img/results/doordash.svg);
+    height: 3.63924051%;
+}
+
+.IndexResults-card-logo {
+    position: absolute;
+    top: 13.44936709%;
+    left: 0;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.IndexResults-mobile-card {
+    display: none;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexResults-mobile-card {
+        display: block;
+        position: absolute;
+        height: 0;
+        top: 0;
+        left: -20%;
+        padding-top: 72.07463145%;
+        width: 46.5625%;
+        will-change: transform;
+        -webkit-transform: translate(100%, -62.85714286%);
+        -ms-transform: translate(100%, -62.85714286%);
+        transform: translate(100%, -62.85714286%);
+    }
+}
+
+.IndexResults-mobile-card-inner {
+    position: absolute;
+    left: 2.45700246%;
+    right: 2.45700246%;
+    top: 1.58730159%;
+    bottom: 1.58730159%;
+    background-image: url(https://www.marqeta.com/static/img/results/card-mobile.png);
+    background-size: 100% 100%;
+}
+
+.IndexResultsCard {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.IndexResultsCard,
+.IndexResultsCard canvas {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.IndexResultsCard canvas {
+    left: 0;
+}

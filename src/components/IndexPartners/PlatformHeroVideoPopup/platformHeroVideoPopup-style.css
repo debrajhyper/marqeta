@@ -1,0 +1,73 @@
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.PlatformHeroVideoPopup {
+    background: rgba(23, 18, 59, 0.5);
+    display: none;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1210;
+}
+
+@media (min-width: 768px) {
+    .PlatformHeroVideoPopup {
+        padding: 60px;
+    }
+}
+
+.PlatformHeroVideoPopup-contentWrapper {
+    position: relative;
+    background: #000;
+    margin: auto;
+    max-width: 1260px;
+    width: 100%;
+}
+
+.PlatformHeroVideoPopup-contentWrapper:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: 56.26984127%;
+}
+
+.PlatformHeroVideoPopup-closeBtn {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    outline: none;
+    cursor: pointer;
+    background: url(https://www.marqeta.com/static/img/platform/icon-close.svg) no-repeat 50% 50%;
+    opacity: 1;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    height: 24px;
+    width: 24px;
+    z-index: 6;
+    -webkit-transition: opacity 0.15s ease;
+    transition: opacity 0.15s ease;
+}
+
+.PlatformHeroVideoPopup-closeBtn:hover {
+    opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+    .PlatformHeroVideoPopup-closeBtn {
+        top: 0;
+        right: -40px;
+    }
+}
+
+.PlatformHeroVideoPopup-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}

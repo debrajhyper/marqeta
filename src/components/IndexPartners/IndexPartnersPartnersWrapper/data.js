@@ -1,0 +1,1 @@
+export const IndexPartnersPartnersBlockHeadTestimonialsItem = ['10+ years of modern card issuing experience', 'Compliance & risk experts', '80x volume growth since 2017'];

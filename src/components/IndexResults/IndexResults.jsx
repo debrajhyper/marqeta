@@ -1,5 +1,8 @@
+import './indexResults-style.css';
+import AwardsUpdate from '@assets/img/Awards_Update.svg';
+import AwardsUpdateMobile from '@assets/img/Awards_Update_Mobile.svg';
 
-export default function IndexResults() {
+export function IndexResults() {
     return (
         <section className="IndexResults" data-view="IndexResults">
             <div className="IndexResults-flex">
@@ -79,18 +82,19 @@ export default function IndexResults() {
                     </div>
                     <div className="IndexResults-bestPlace">
                         <img
-                            src="/static/img/Awards_Update.svg"
+                            src={AwardsUpdate}
                             className="desktop"
                             alt="Awards received: Forbes, Fast Company, CNBC"
                         />
                         <img
-                            src="/static/img/Awards_Update_Mobile.svg"
+                            src={AwardsUpdateMobile}
                             className="mobile"
                             alt="Awards received: Forbes, Fast Company, CNBC"
                         />
                     </div>
                 </div>
             </div>
+            
             <div className="IndexResults-canvas">
                 <canvas width="1898.75" height={2990} style={{ height: 2392 }} />
                 <div className="IndexResults-card" data-tp="placeholder">

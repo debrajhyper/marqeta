@@ -1,0 +1,68 @@
+a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+}
+
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.PageIndex-caption {
+    position: relative;
+    width: 100%;
+    background: #2a206a;
+}
+
+.PageIndex-captionWrapper {
+    width: 1260px;
+    margin: 0 auto;
+    padding: 30px 0;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .PageIndex-captionWrapper {
+        width: 87.5vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .PageIndex-captionWrapper {
+        padding: 14px 0;
+        width: 83.33333333vw;
+    }
+}
+
+@media (min-width: 368px) and (max-width: 767px) {
+    .PageIndex-captionWrapper {
+        margin: 0 40px;
+        width: auto;
+    }
+}
+
+@media (max-width: 367px) {
+    .PageIndex-captionWrapper {
+        width: 288px;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .PageIndex-captionWrapper {
+        padding: 17px 0;
+    }
+}
+
+.PageIndex-captionText {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.64285714;
+    letter-spacing: 0.3px;
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .PageIndex-captionText {
+        font-size: 12px;
+        line-height: 1.66666667;
+        letter-spacing: 0.26px;
+    }
+}

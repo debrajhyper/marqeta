@@ -1,0 +1,206 @@
+.PageIndex-overflowWrapper {
+    background: #f7f7f8;
+}
+
+.IndexFeatures {
+    background: #f7f7f8;
+    overflow: hidden;
+    padding-bottom: 80px;
+    -webkit-transition: opacity 0.33333333s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 0.33333333s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.33333333s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 0.33333333s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.33333333s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.33333333s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.33333333s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.33333333s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 0.33333333s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexFeatures {
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexFeatures .owl-dots {
+        position: relative;
+        width: 100%;
+        padding: 40px 0 72px;
+        font-size: 0;
+        text-align: center;
+    }
+
+    .IndexFeatures .owl-carousel button.owl-dot {
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background: #d5cce6;
+        border-radius: 4.5px;
+        display: inline-block;
+        margin: 0 3px;
+        cursor: pointer;
+    }
+
+    .IndexFeatures .owl-carousel button.owl-dot.active {
+        background: #1cc283;
+    }
+}
+
+section {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.IndexPurpleCard {
+    background-color: #f7f7f8;
+    position: relative;
+    z-index: 11;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexPurpleCard {
+        display: none;
+    }
+}
+
+.IndexPurpleCard-card {
+    width: 14vw;
+    height: 36vw;
+    max-width: 202px;
+    max-height: 520px;
+    position: absolute;
+    left: 50%;
+    top: -150px;
+    -webkit-transform: rotate(59deg) skew(0deg, -26deg) translateZ(0);
+    transform: rotate(59deg) skew(0deg, -26deg) translateZ(0);
+    z-index: 11;
+    will-change: transform, background-color;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexPurpleCard-card {
+        left: 56%;
+        top: -100px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexPurpleCard-card {
+        top: calc(-17vw + 90px);
+    }
+}
+
+.IndexPurpleCard-cardItem {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 13px;
+}
+
+.IndexPurpleCard-cardItem_1 {
+    opacity: 1;
+    background-color: #5f53c3;
+}
+
+.IndexPurpleCard-cardItem_2 {
+    opacity: 0;
+    will-change: opacity;
+    background-color: #2a206a;
+    z-index: 10;
+}
+
+.IndexPurpleCard-trigger {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .IndexPurpleCard-trigger {
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .IndexPurpleCard-trigger {
+        top: 0;
+    }
+}
+
+.IndexTailored {
+    /* background-color: #2a206a00; */
+    position: relative;
+    pointer-events: none;
+    z-index: 12;
+}
+
+.isEdge .IndexTailored {
+    z-index: auto;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored {
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(82%, #2a206a), to(#332878));
+        background-image: linear-gradient(180deg, #2a206a 82%, #332878);
+    }
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored {
+        margin-top: 60px;
+    }
+}
+
+.IndexTailored-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 550vh;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-wrapper {
+        display: block;
+        height: auto;
+        padding-top: 186px;
+        width: 100%;
+    }
+}
+
+
+/* =========================================================================================================================== */
+
+.IndexFeatures-aboutLine {
+    display: inline-block;
+    width: auto;
+    will-Change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.IndexFeatures-list-titleLine {
+    display: inline-block;
+    width: auto;
+    will-Change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.IndexFeatures-list-descriptionLine {
+    display: inline-block;
+    width: auto;
+    will-Change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+}

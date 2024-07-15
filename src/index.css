@@ -1,18 +1,18 @@
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400; 
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; 
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
 }
-  */
+
+*,*::before,*::after {
+  box-sizing: inherit;
+}
+
+
+strong,b {
+  font-weight: 700;
+}
 
 body {
   margin: 0;
@@ -30,5 +30,58 @@ body {
   box-sizing: border-box;
 }
 
+@media print {
+  body {
+      background-color: #FFFFFF;
+  }
+}
 
+body::backdrop {
+  background-color: #FFFFFF;
+}
 
+@font-face {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Graphik-Light'),url(/fonts/Graphik-Light-Web.woff2);
+}
+
+@font-face {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Graphik-Regular'),url(/fonts/Graphik-Regular-Web.woff2);
+}
+
+@font-face {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: local('Graphik-Medium'),url(/fonts/Graphik-Medium-Web.woff2);
+}
+
+@font-face {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Graphik-Medium'),url(/fonts/Graphik-Semibold-Web.woff2);
+}
+
+a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+iframe {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}

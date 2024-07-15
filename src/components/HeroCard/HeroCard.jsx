@@ -1,21 +1,21 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import './heroCard-style.css';
+import { LaptopBreakPoint, TabletBreakPoint, MobileBreakPoint } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
-export default function HeroCard() {
+
+export function HeroCard() {
   useGSAP(() => {
     gsap.to("#hero-card", { opacity: 1, visibility: "visible", delay: 0.5 })
 
-    let mediaQuery = gsap.matchMedia()
-    const LaptopBreakPoint = 1025
-    const TabletBreakPoint = 768
-    const mobileBreakPoint = 766
+    let mediaQuery = gsap.matchMedia();
     mediaQuery.add({
       isDesktop: `(min-width: ${LaptopBreakPoint}px)`,
       isLaptop: `(max-width: ${LaptopBreakPoint - 1}px) and (min-width: ${TabletBreakPoint + 1}px)`,
-      isTablet: `(max-width: ${TabletBreakPoint}px) and (min-width: ${mobileBreakPoint + 1}px)`,
-      isMobile: `(max-width: ${mobileBreakPoint}px)`,
+      isTablet: `(max-width: ${TabletBreakPoint}px) and (min-width: ${MobileBreakPoint + 1}px)`,
+      isMobile: `(max-width: ${MobileBreakPoint}px)`,
       reduceMotion: "(prefers-reduced-motion: reduce)",
     }, (context) => {
       let { isDesktop, isLaptop, isTablet, isMobile } = context.conditions;
@@ -43,7 +43,6 @@ export default function HeroCard() {
           scale: 0.5,
           width: isDesktop ? 280 : isLaptop ? 249 : isTablet ? 191 : 205,
           height: isDesktop ? 450 : isLaptop ? 408 : isTablet ? 310 : 333,
-          // zIndex: isMobile ? -100 : 9999,
           duration: 1,
           opacity: isMobile ? 0.1 : 1,
           scrollTrigger: {

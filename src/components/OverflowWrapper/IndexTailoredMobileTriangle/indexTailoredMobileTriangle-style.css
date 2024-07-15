@@ -1,0 +1,20 @@
+/*! CSS Used from: https://www.marqeta.com/static/style.css */
+.IndexTailored-mobileTriangle {
+    position: absolute;
+    top: -140px;
+    width: 100%;
+    left: 0;
+    display: none;
+}
+
+.IndexTailored-mobileTriangle svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 367px),
+(min-width: 368px) and (max-width: 767px) {
+    .IndexTailored-mobileTriangle {
+        display: block;
+    }
+}
