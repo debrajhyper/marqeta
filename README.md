@@ -2,19 +2,18 @@
 
 🌐 Website: [marqeta-ui.vercel.app](https://marqeta-ui.vercel.app/)
 
-    This project is a clone of Marqeta as part of the assignment. The task is to develop a 
-    clone of the provided web page and host it. The project involves implementing various 
-    animations and ensuring the overall structure and performance of the website are up 
-    to standards.
+    This project is a clone of Marqeta as part of the assignment. The task is to develop a clone of the 
+    provided web page and host it. The project involves implementing various animations and ensuring the 
+    overall structure and performance of the website are up to standards.
 
-<video loop controls autoplay muted src="marqeta-demo - Made with Clipchamp.mp4" title="Title"></video>
+<video loop controls autoplay muted src="./thumbnail/marqeta-demo.mp4" title="Demo video"></video>
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="./thumbnail/image1.png" style="width: 100%;"/>
-  <img src="./thumbnail/image2.png" style="width: 100%;"/>
-  <img src="./thumbnail/image3.png" style="width: 100%;"/>
-  <img src="./thumbnail/image4.png" style="width: 100%;"/>
-</div>
+<p align="center">
+  <img src="./thumbnail/image1.png" width="500"/>
+  <img src="./thumbnail/image2.png" width="500"/>
+  <img src="./thumbnail/image3.png"width="500"/>
+  <img src="./thumbnail/image4.png"width="500"/>
+</p>
 
 ## 🤌🏻 Introduction
 
