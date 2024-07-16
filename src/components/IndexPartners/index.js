@@ -1,0 +1,1 @@
+export { IndexPartners as default } from './IndexPartners';

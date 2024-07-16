@@ -1,0 +1,1 @@
+export { PageIndexCaption as default } from './PageIndexCaption';

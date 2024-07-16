@@ -1,0 +1,23 @@
+.loader-wrapper {
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.progress {
+    width: 100.8px;
+    height: 16.8px;
+    border-radius: 16.8px;
+    background: repeating-linear-gradient(135deg, #2a206a 0 8.4px, rgba(42, 32, 106, 0.75) 0 16.8px) left/0% 100% no-repeat,
+        repeating-linear-gradient(135deg, rgba(42, 32, 106, 0.2) 0 8.4px, rgba(42, 32, 106, 0.1) 0 16.8px) left/100% 100%;
+    animation: progress-p43u5e 1.6s infinite;
+}
+
+@keyframes progress-p43u5e {
+    100% {
+        background-size: 100% 100%;
+    }
+}

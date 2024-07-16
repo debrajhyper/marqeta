@@ -1,3 +1,4 @@
+export { Loader } from "./Loader/Loader";
 export { Header } from "./Header/Header";
 export { HeroCard } from "./HeroCard/HeroCard";
 export { HeroSection } from "./HeroSection/HeroSection";

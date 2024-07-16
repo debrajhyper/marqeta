@@ -253,3 +253,17 @@ section.IndexTailoredGreenSvg {
         stroke-width: 5;
     }
 }
+
+
+.PageIndex-overflowWrapper {
+    position: relative;
+    contain: paint;
+}
+
+.IndexTailored {
+    position: sticky;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    pointer-events: none;
+}

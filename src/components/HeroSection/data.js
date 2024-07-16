@@ -8,31 +8,26 @@ export const textArray = ['credit', 'payroll', 'lending', 'expense', 'embedded f
 
 export const IndexHeroLogo = [
     {
-        dataLazy: "true",
         dataSrc: uberSVG,
         alt: "Uber logo",
         src: uberSVG,
     },
     {
-        dataLazy: "true",
         dataSrc: squareSVG,
         alt: "Square logo",
         src: squareSVG,
     },
     {
-        dataLazy: "true",
         dataSrc: instaCartSVG,
         alt: "Instacart logo",
         src: instaCartSVG,
     },
     {
-        dataLazy: "true",
         dataSrc: jpmSVG,
         alt: "JPM logo",
         src: jpmSVG,
     },
     {
-        dataLazy: "true",
         dataSrc: doorDashSVG,
         alt: "Doordash logo",
         src: doorDashSVG,

@@ -7,7 +7,6 @@
             "@assets/*": ["assets/*"],
             "@components/*": ["components/*"],
             "@constants/*": ["constants/*"],
-            "@styles/*": ["styles/*"],
         }
     }
 }

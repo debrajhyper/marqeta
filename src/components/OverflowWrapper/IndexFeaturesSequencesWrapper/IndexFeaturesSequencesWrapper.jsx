@@ -10,9 +10,16 @@ export function IndexFeaturesSequencesWrapper() {
         const updateMedia = () => {
             setDesktop(window.innerWidth > MobileBreakPoint);
         };
+
+        // Set initial state on mount
+        updateMedia();
+
+        // Add event listener for window resize
         window.addEventListener("resize", updateMedia);
+
+        // Clean up event listener on unmount
         return () => window.removeEventListener("resize", updateMedia);
-    });
+    }, []); // Empty dependency array ensures this effect runs only once
 
     return (
         <div className="IndexFeatures-sequences-wrapper isSectionShown">

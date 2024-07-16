@@ -8,16 +8,19 @@ import { IndexTailoredMobileTriangle } from "./IndexTailoredMobileTriangle/Index
 import { IndexTailoredSequenceWrapper } from "./IndexTailoredSequenceWrapper/IndexTailoredSequenceWrapper";
 import { IndexFeaturesSequencesWrapper } from "./IndexFeaturesSequencesWrapper/IndexFeaturesSequencesWrapper";
 
+// Register the GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function OverflowWrapper() {
+    // GSAP animations
     useGSAP(() => {
-        gsap.fromTo(".IndexPurpleCard-card", 
+        // Initial animation for smooth transition
+        gsap.fromTo(".IndexPurpleCard-card",
             {
                 transform: 'translate3d(0vw, 0px, 0px) rotate(59deg) scale(1) skew(0deg, -26deg)'
             },
             {
-                transform: 'translate3d(-69.8761vw, 394.4px, 0px) rotate(94.9363deg) scale(9.98407) skew(0deg, -26deg)',
+                transform: 'translate3d(-69.8761vw, 395.2px, 0px) rotate(94.8999deg) scale(9.97497) skew(0deg, -26deg)',
                 duration: 1,
                 scrollTrigger: {
                     trigger: ".IndexPurpleCard-card",
@@ -60,9 +63,13 @@ export function OverflowWrapper() {
     })
 
     return (
-        <div className="PageIndex-overflowWrapper" style={{ overflow: "hidden" }}>
+        <div className="PageIndex-overflowWrapper">
             <section className="IndexFeatures" data-view="IndexFeatures">
+
+                {/* Index Feature Text */}
                 <IndexFeaturesBg />
+
+                {/* Index sequence elements */}
                 <IndexFeaturesSequencesWrapper />
             </section>
             <div className="IndexPurpleCard" data-view="IndexPurpleCard">
@@ -72,10 +79,16 @@ export function OverflowWrapper() {
                 </div>
                 <div className="IndexPurpleCard-trigger" />
             </div>
-            <section className="IndexTailored isHide" data-view="IndexTailored">
+            <section className="IndexTailored" data-view="IndexTailored">
                 <div className="IndexTailored-wrapper">
+
+                    {/* Mobile SVG triangle */}
                     <IndexTailoredMobileTriangle />
+
+                    {/* Index sequence card - globe elements */}
                     <IndexTailoredSequenceWrapper />
+
+                    {/* Index sequence text elements */}
                     <IndexTailoredTextWrapper />
                 </div>
             </section>

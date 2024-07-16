@@ -26,6 +26,38 @@ export function IndexResults() {
                 onLeaveBack: self => self.disable(),
             },
         });
+        gsap.to(".count", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            stagger: .2,
+            duration: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexResults-cardsCount",
+                start: "top 70%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
+        gsap.to(".IndexResults-cardsCount span:last-child", {
+            transform: 'translateY(0)',
+            opacity: 1,
+            visibility: "visible",
+            duration: 1,
+            delay: 2,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".IndexResults-cardsCount",
+                start: "top 70%",
+                end: "bottom 100%",
+                scrub: 1,
+                toggleActions: "play none none none",
+                onLeaveBack: self => self.disable(),
+            },
+        });
     })
 
     return (

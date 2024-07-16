@@ -19,6 +19,7 @@
     transition: -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
     transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
     transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translate(0px 0px);
 }
 
 @media (min-width: 1440px) {
@@ -208,4 +209,13 @@
         font-size: 16px;
         line-height: 26px;
     }
+}
+
+.IndexTailored-text {
+    display: inline-block;
+    width: auto;
+    will-Change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
 }

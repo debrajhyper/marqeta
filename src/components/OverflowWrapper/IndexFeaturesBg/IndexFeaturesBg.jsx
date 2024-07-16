@@ -4,10 +4,13 @@ import { ScrollTrigger } from "gsap/all";
 import './indexFeaturesBg-style.css';
 import { IndexFeaturesListDescriptionLine, IndexFeaturesListTitleLine } from "./data";
 
+// Register the GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function IndexFeaturesBg() {
+    // GSAP animations
     useGSAP(() => {
+        // Initial animation for smooth transition
         gsap.to(".IndexFeatures-aboutLine", {
             transform: 'translateY(0)',
             opacity: 1,

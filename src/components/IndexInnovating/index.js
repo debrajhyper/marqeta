@@ -1,0 +1,1 @@
+export { IndexInnovating as default } from './IndexInnovating';

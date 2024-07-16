@@ -13,7 +13,6 @@ export default defineConfig({
       '@assets': '/src/assets',
       '@components': '/src/components',
       '@constants': '/src/constants',
-      '@styles': '/src/styles',
     },
   },
   assetsInclude: ['**/*.lottie'],

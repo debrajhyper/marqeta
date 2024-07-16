@@ -4,42 +4,50 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import '@dotlottie/player-component';
 import './heroSection-style.css';
-import { textArray, IndexHeroLogo } from './data';
 import topPhoto from '@assets/top-photo.png';
 import topUILottie from '@assets/top-ui.lottie';
 import topUIMobileLottie from '@assets/top-ui-mobile-2.lottie';
 import symbolSVG from '@assets/svg/symbol/svg/sprite.symbol.svg';
+import heroSequence from '@assets/marqeta-videos/img/hero/sequence.mp4';
+import { textArray, IndexHeroLogo } from './data';
 import { DesktopGrid, HomepageDesktopGrid } from './DesktopGrid';
 import { HomepageMobileGrid, MobileGrid } from './MobileGrid';
 import { LaptopBreakPoint, TabletBreakPoint, MobileBreakPoint } from '@/constants';
 
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 export function HeroSection() {
+    // Refs for DOM elements
+    const swapTitleRef = useRef(null);
+    const pageSubtitleRef = useRef(null);
+    const pageButtonRef = useRef(null);
+    const heroPhotoRef = useRef(null);
     const slidesRef = useRef([]);
     const listRef = useRef(null);
     const vSlideRef = useRef(null);
 
+    // GSAP animations
     useGSAP(() => {
         let mediaQuery = gsap.matchMedia();
 
-        gsap.to("#swap-title", { opacity: 1, y: 0, visibility: "visible", delay: 1 })
-        gsap.to("#swap-text", { opacity: 1, y: 0, visibility: "visible", delay: 1.5 })
-        gsap.to("#page-subtitle", { opacity: 1, visibility: "visible", delay: 1 })
-        gsap.to("#page-button", { opacity: 1, visibility: "visible", delay: 1 })
-        gsap.fromTo(".grid-svg-path",
-            {
-                strokeDashoffset: "-610.244px",
-                strokeDasharray: "0px, 999999px",
-            },
+        // Animations for elements
+        gsap.to(swapTitleRef.current, { opacity: 1, y: 0, visibility: "visible", delay: 1 });
+        gsap.to(listRef.current, { opacity: 1, y: 0, visibility: "visible", delay: 1.5 });
+        gsap.to(pageSubtitleRef.current, { opacity: 1, visibility: "visible", delay: 1 });
+        gsap.to(pageButtonRef.current, { opacity: 1, visibility: "visible", delay: 1 });
+        gsap.fromTo(".grid-svg-path", {
+            strokeDashoffset: "-610.244px",
+            strokeDasharray: "0px, 999999px",
+        },
             {
                 strokeDashoffset: "0px",
                 strokeDasharray: "1200px 0px",
                 duration: 2
-            })
-        gsap.to(".IndexHero-logo", { opacity: 1, visibility: "visible", stagger: 0.1 })
+            });
+        gsap.to(".IndexHero-logo", { opacity: 1, visibility: "visible", stagger: 0.1 });
 
-
+        // Media query based animations
         mediaQuery.add({
             isDesktop: `(min-width: ${LaptopBreakPoint}px)`,
             isLaptop: `(max-width: ${LaptopBreakPoint - 1}px) and (min-width: ${TabletBreakPoint + 1}px)`,
@@ -47,25 +55,23 @@ export function HeroSection() {
             isMobile: `(max-width: ${MobileBreakPoint}px)`,
         }, (context) => {
             let { isDesktop, isLaptop, isTablet } = context.conditions;
-            gsap.fromTo("#hero-photo",
-                {
-                    transform: "translate3d(0px, 0px, 0px) rotate(0deg)"
-                },
+            gsap.fromTo(heroPhotoRef.current, {
+                transform: "translate3d(0px, 0px, 0px) rotate(0deg)"
+            },
                 {
                     transform: "translate3d(100px, -300px, 0px) rotate(15deg)",
                     duration: 1,
                     scrollTrigger: {
-                        trigger: "#hero-photo",
-                        start: isDesktop ? "top, 33%" : isLaptop ? "top, 32%" : isTablet ? "top, 30%" : "top, 20%",
+                        trigger: heroPhotoRef.current,
+                        start: isDesktop ? "top, 25%" : isLaptop ? "top, 32%" : isTablet ? "top, 30%" : "top, 20%",
                         scrub: 1,
                     }
-                })
-        })
-        gsap.fromTo(".grid-svg-path",
-            {
-                strokeDashoffset: "0px",
-                strokeDasharray: "1200px 0px",
-            },
+                });
+        });
+        gsap.fromTo(".grid-svg-path", {
+            strokeDashoffset: "0px",
+            strokeDasharray: "1200px 0px",
+        },
             {
                 strokeDashoffset: "-610.244px",
                 // -245.393
@@ -76,9 +82,10 @@ export function HeroSection() {
                     start: "top, 11.7%",
                     scrub: 1,
                 }
-            })
-    }, [])
+            });
+    }, []);
 
+    // Vertical text slide effect using GSAP
     useLayoutEffect(() => {
         const slides = slidesRef.current;
         const list = listRef.current;
@@ -124,7 +131,7 @@ export function HeroSection() {
         vSlide.progress(progress);
         vSlideRef.current = vSlide;
 
-
+        // Cleanup
         return () => {
             if (vSlideRef.current) {
                 vSlideRef.current.kill();
@@ -132,29 +139,17 @@ export function HeroSection() {
         };
     }, []);
 
-
     return (
         <section className="IndexHero" data-view="IndexHero">
             <div className="IndexHero-wrapper">
                 <div className="IndexHero-head">
                     <div className="IndexHero-titleWrapper">
+
+                        {/* Title and swapping text */}
                         <h1 className="IndexHero-title isImmediateShow isSectionShown" id="page-title">
-                            <span id="swap-title">The next era of</span>
-                            <span
-                                style={{
-                                    overflow: "hidden",
-                                    position: "relative",
-                                    height: 65,
-                                    color: "#20A472",
-                                    display: "inline-block"
-                                }}
-                                id="swap-container"
-                            >
-                                <div
-                                    id="swap-text"
-                                    className='v-slides'
-                                    ref={listRef}
-                                >
+                            <span id="swap-title" ref={swapTitleRef}>The next era of</span>
+                            <span id="swap-container" style={{ height: 65 }}>
+                                <div id="swap-text" className='v-slides' ref={listRef}>
                                     {
                                         textArray?.map((item, index) => (
                                             <div className="v-slide" key={index} ref={el => slidesRef.current[index] = el} style={{ height: 65 }}>
@@ -165,11 +160,15 @@ export function HeroSection() {
                                 </div>
                             </span>
                         </h1>
-                        <div id='page-subtitle' className="IndexHero-subtitle isSectionShown">
+
+                        {/* Subtitle */}
+                        <div id='page-subtitle' ref={pageSubtitleRef} className="IndexHero-subtitle isSectionShown">
                             Integrate end to end credit and payment solutions into your business
                             processes using our modern card issuing platform.
                         </div>
-                        <div id='page-button' className="IndexHero-textButton IndexHero-ctas isSectionShown">
+
+                        {/* Buttons */}
+                        <div id='page-button' ref={pageButtonRef} className="IndexHero-textButton IndexHero-ctas isSectionShown">
                             <a
                                 className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButtonBase-root css-1gbd66w-MuiButtonBase-root-MuiButton-root-Link-root"
                                 target="_self"
@@ -180,28 +179,21 @@ export function HeroSection() {
                                 <span className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root" />
                             </a>
                             <a href="/platform/credit" target="_self">
-                                <button
-                                    className="MuiButton-root MuiButton-outlined"
-                                    aria-label="Learn more about credit"
-                                >
+                                <button className="MuiButton-root MuiButton-outlined">
                                     Learn more about credit
                                 </button>
                             </a>
                         </div>
                     </div>
-                    <div
-                        className="IndexHero-sequenceWrapper isHide"
-                        data-video-path="../../assets/marqeta-videos/img/hero/"
-                        style={{ visibility: "hidden" }}
-                    >
+                    <div className="IndexHero-sequenceWrapper isHide" style={{ visibility: "hidden" }}>
                         <div className="IndexHero-sequenceInner">
                             <video
-                                muted=""
-                                playsInline=""
+                                muted
+                                playsInline
                                 crossOrigin=""
                                 preload="auto"
                                 className="IndexHero-sequence isShow"
-                                src="../../assets/marqeta-videos/img/hero/sequence.mp4"
+                                src={heroSequence}
                                 data-timeout={262}
                             />
                         </div>
@@ -214,26 +206,29 @@ export function HeroSection() {
                         </svg>
                     </div>
                 </div>
+
+                {/* Logos */}
                 <div className="IndexHero-logos">
                     {
                         IndexHeroLogo.map((item, index) => {
-                            const { dataLazy, dataSrc, alt, src } = item
-                            return <div key={index} className="IndexHero-logo isImmediateShow isSectionShown">
-                                <img
-                                    data-lazy={dataLazy}
-                                    data-src={dataSrc}
-                                    alt={alt}
-                                    src={src}
-                                />
-                            </div>
+                            const { dataSrc, alt, src } = item;
+                            return (
+                                <div key={index} className="IndexHero-logo isImmediateShow isSectionShown">
+                                    <img data-lazy="true" data-src={dataSrc} alt={alt} src={src} />
+                                </div>
+                            )
                         })
                     }
                 </div>
             </div>
+
+            {/* Hero photo and card animations */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 600 }}>
                 <div className="IndexHero-wrapper" style={{ position: "relative", height: "100%" }}>
                     <div className="hero-asset" style={{ position: "absolute", top: 0, right: 0, zIndex: 999, width: "100%", height: "100%" }}>
-                        <div id="hero-photo" className="hero-asset-photo css-1en4yzq-Homepage-heroPhoto">
+                        
+                        {/* Main hero photo */}
+                        <div id="hero-photo" ref={heroPhotoRef} className="hero-asset-photo css-1en4yzq-Homepage-heroPhoto">
                             <img
                                 src={topPhoto}
                                 srcSet={`${topPhoto}?width=3840 3840w, ${topPhoto}?width=3520 3520w, ${topPhoto}?width=3200 3200w, ${topPhoto}?width=2880 2880w, ${topPhoto}?width=2560 2560w, ${topPhoto}?width=2240 2240w, ${topPhoto}?width=1920 1920w, ${topPhoto}?width=1600 1600w, ${topPhoto}?width=1440 1440w, ${topPhoto}?width=1280 1280w, ${topPhoto}?width=960 960w, ${topPhoto}?width=1280 640w`}
@@ -242,6 +237,7 @@ export function HeroSection() {
                                 style={{ width: "100%" }}
                             />
                         </div>
+
                         {/* Desktop view */}
                         <div className="hero-asset-grid top-grid css-1b8td8u-Homepage-desktopGrid">
                             <HomepageDesktopGrid />
@@ -254,6 +250,7 @@ export function HeroSection() {
                                 background="transparent"
                             />
                         </div>
+                        
                         {/* Mobile view */}
                         <div className="css-1ac2p79-Homepage-mobileGrid">
                             <HomepageMobileGrid />
@@ -267,6 +264,8 @@ export function HeroSection() {
                             />
                         </div>
                     </div>
+
+                    {/* SVG lines Grid */}
                     <div className="hero-asset-grid css-1b8td8u-Homepage-desktopGrid" style={{ zIndex: 99 }}>
                         <DesktopGrid />
                     </div>

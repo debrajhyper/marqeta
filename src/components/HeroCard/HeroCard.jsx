@@ -4,13 +4,17 @@ import { ScrollTrigger } from "gsap/all";
 import './heroCard-style.css';
 import { LaptopBreakPoint, TabletBreakPoint, MobileBreakPoint } from "@/constants";
 
+// Register the GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function HeroCard() {
+  // GSAP animations
   useGSAP(() => {
+    // Initial animation to make the card visible
     gsap.to("#hero-card", { opacity: 1, visibility: "visible", delay: 0.5 })
 
     let mediaQuery = gsap.matchMedia();
+    // Media query based animations
     mediaQuery.add({
       isDesktop: `(min-width: ${LaptopBreakPoint}px)`,
       isLaptop: `(max-width: ${LaptopBreakPoint - 1}px) and (min-width: ${TabletBreakPoint + 1}px)`,
@@ -19,6 +23,7 @@ export function HeroCard() {
       reduceMotion: "(prefers-reduced-motion: reduce)",
     }, (context) => {
       let { isDesktop, isLaptop, isTablet, isMobile } = context.conditions;
+      // Animation for the card element based on scroll triggered
       gsap.fromTo("#hero-card",
         {
           background: "linear-gradient(#5e5ab7, #463ba7)",
@@ -48,7 +53,7 @@ export function HeroCard() {
           opacity: isMobile ? 0 : 1,
           scrollTrigger: {
             trigger: "#hero-card",
-            start: isDesktop ? "top, 27%" : isLaptop ? "top, 27%" : isTablet ? "top, 20%" : "top, 20%",
+            start: isDesktop ? "top, 22%" : isLaptop ? "top, 27%" : isTablet ? "top, 20%" : "top, 20%",
             end: isDesktop ? "+=1800rem" : isLaptop ? "+=1800rem" : isTablet ? "+=1100rem" : "+=1800rem",
             scrub: .1,
           },
@@ -90,8 +95,7 @@ export function HeroCard() {
           display: "none",
           duration: 10 * 1000,
         }, 0);
-    })
-
+    });
   }, [])
 
   return (
