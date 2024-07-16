@@ -11,8 +11,8 @@
 <p align="center">
   <img src="./thumbnail/image1.png" width="410"/>
   <img src="./thumbnail/image2.png" width="410"/>
-  <img src="./thumbnail/image3.png"width="500"/>
-  <img src="./thumbnail/image4.png"width="500"/>
+  <img src="./thumbnail/image3.png"width="410"/>
+  <img src="./thumbnail/image4.png"width="410"/>
 </p>
 
 ## 🤌🏻 Introduction
