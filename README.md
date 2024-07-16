@@ -2,9 +2,12 @@
 
 🌐 Website: [marqeta-ui.vercel.app](https://marqeta-ui.vercel.app/)
 
-    This project is a clone of [Marqeta](https://www.marqeta.com) as part of the assignment. The task is to develop a clone of the provided web page and host it. The project involves implementing various animations and ensuring the overall structure and performance of the website are up to standards.
+    This project is a clone of Marqeta as part of the assignment. The task is to develop a 
+    clone of the provided web page and host it. The project involves implementing various 
+    animations and ensuring the overall structure and performance of the website are up 
+    to standards.
 
-[![Watch the video](./thumbnail/image1.png)](./thumbnail/marqeta-demo%20-%20Made%20with%20Clipchamp.mp4)
+<video loop controls autoplay muted src="marqeta-demo - Made with Clipchamp.mp4" title="Title"></video>
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
   <img src="./thumbnail/image1.png" style="width: 100%;"/>
@@ -30,6 +33,8 @@ This assignment aims to replicate [Marqeta](https://www.marqeta.com) Sample usin
 ## 🕹️ Technologies Used
 
 - React
+- Vite
+- Javascript
 - GSAP
 - ScrollTrigger
 - Webpack
@@ -50,17 +55,17 @@ The website optimizes performance by lazy loading components and assets, minimiz
 
 Clone the project
 ```
-  https://github.com/debrajhyper/marqeta.git
+    https://github.com/debrajhyper/marqeta.git
 ```
-
 Go to the project directory
 ```
-  cd marqeta
+    cd marqeta
 ```
-
 Install dependencies
 ```
-  $npm install
+    $npm install
 ```
-
 Start the dev server
+```
+    npx vite --port=4000
+```
