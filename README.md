@@ -2,9 +2,9 @@
 
 🌐 Website: [marqeta-ui.vercel.app](https://marqeta-ui.vercel.app/)
 
-    This project is a clone of Marqeta as part of the assignment. The task is to develop a clone of 
-    the provided web page and host it. The project involves implementing various animations and 
-    ensuring the overall structure and performance of the website are up to standards.
+    This project is a clone of Marqeta as part of the gsap animation. The project involves 
+    implementing various animations and ensuring the overall structure and performance of the 
+    website is up to standards.
 
 <video loop controls autoplay muted src="./thumbnail/marqeta-demo.mp4" title="Demo video"></video>
 
