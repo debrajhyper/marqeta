@@ -11,7 +11,7 @@ export function HeroCard() {
   // GSAP animations
   useGSAP(() => {
     // Initial animation to make the card visible
-    gsap.to("#hero-card", { opacity: 1, visibility: "visible", delay: 0.5 })
+    gsap.to("#hero-card", { opacity: 1, visibility: "visible", delay: 2 })
 
     let mediaQuery = gsap.matchMedia();
     // Media query based animations
@@ -35,7 +35,7 @@ export function HeroCard() {
           skewX: -4,
           skewY: 0,
           scale: 1,
-          opacity: 1,
+          opacity: isMobile ? 1 : 0,
           borderRadius: isMobile ? '10px' : '15px 22px'
         },
         {
