@@ -1,4 +1,4 @@
-# Marqeta Website Clone Assignment
+# Marqeta Website Clone
 
 🌐 Website: [marqeta-ui.vercel.app](https://marqeta-ui.vercel.app/)
 
@@ -8,7 +8,7 @@
 
 <video loop controls autoplay muted src="./thumbnail/marqeta-demo.mp4" title="Demo video"></video>
 
-![](./thumbnail/intro-demo.gif)
+<img src="./thumbnail/intro-demo.gif" width="100%"/>
 
 <p align="center">
   <img src="./thumbnail/image1.png" width="410"/>
